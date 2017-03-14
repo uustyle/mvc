@@ -18,8 +18,8 @@
 <script>
 $(function() {
 
- 	var socket = new SockJS("/mvc/endPoint");
-// 	 var socket = new WebSocket('ws://' + location.host + '/mvc/hello1');
+	var socket = new SockJS("/mvc/endPoint.do");
+// 	 var socket = new WebSocket('ws://' + location.host + '/mvc/endPoint.do');
 	 var stompClient = Stomp.over(socket);
 
 	 // callback function to be called when stomp client is connected to server (see Note 2)

@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/websocket
-		http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd">
+		http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
   <context:component-scan base-package="sample.customer.web.controller"/>
   <context:component-scan base-package="sample.user.web.controller"/>
@@ -30,11 +30,24 @@
 
 <!--
 <websocket:message-broker application-destination-prefix="/app">
-       <websocket:stomp-endpoint path="/hello1">
+       <websocket:stomp-endpoint path="endPoint.do">
             <websocket:sockjs/>
        </websocket:stomp-endpoint>
        <websocket:simple-broker prefix="/topic"/>
 </websocket:message-broker>
  -->
+
+ <websocket:message-broker
+        application-destination-prefix="/app"
+        user-destination-prefix="/user">
+        <websocket:stomp-endpoint path="endPoint.do">
+            <websocket:handshake-interceptors>
+                <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+                <bean class="sample.customer.biz.interceptor.HandshakeInterceptor"/>
+            </websocket:handshake-interceptors>
+            <websocket:sockjs session-cookie-needed="true" />
+        </websocket:stomp-endpoint>
+        <websocket:simple-broker prefix="/topic, /message" />
+    </websocket:message-broker>
 
 </beans>
