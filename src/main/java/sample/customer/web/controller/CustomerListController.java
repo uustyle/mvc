@@ -5,6 +5,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,6 +22,9 @@ public class CustomerListController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private AutowireCapableBeanFactory beanFactory;
+
     @RequestMapping(value = "/", method = GET)
     public String home() {
         return "forward:/customer";
@@ -28,7 +32,13 @@ public class CustomerListController {
 
     @RequestMapping(value = "/customer", method = GET)
     public String showAllCustomers(Model model) {
-        List<Customer> customers = customerService.findAll();
+
+    	Notify notify = new Notify();
+    	beanFactory.autowireBean(notify);
+    	String ret = notify.getMessage();
+    	System.out.println(ret);
+
+    	List<Customer> customers = customerService.findAll();
         model.addAttribute("customers", customers);
         return "customer/list";
     }
