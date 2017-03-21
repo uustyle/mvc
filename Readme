@@ -18,5 +18,29 @@ http://yosshio0426.hatenadiary.com/entry/2016/07/20/202512
 https://sites.google.com/site/soracane/home/springnitsuite/spring-no-ji-nengnitsuite/3-zi-dong-denidisuru-fang-fa
 
 
+#!/bin/bash
+
+BASE=`basename $1`
+DIR=`dirname $1`
+
+echo "BASE:${BASE}"
+echo "DIR:${DIR}"
+
+mvn clean install -f /root/eclipse/jee-neon/eclipse3/SpringKenshu/pom.xml -l log.txt
+
+ret=$?
+#if test ${ret} -eq 0
+if [ ${ret} -eq 0 ];
+then
+  echo "aaa"
+  exit 0
+else
+  echo "bbb"
+  exit 1
+fi
+echo "ccc"
+
+
+
 
 
