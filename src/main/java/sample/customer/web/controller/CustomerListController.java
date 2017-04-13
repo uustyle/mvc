@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import sample.customer.biz.domain.Customer;
 import sample.customer.biz.service.CustomerService;
 import sample.customer.biz.service.DataNotFoundException;
+import sample.customer.biz.thread.PrintTask;
 
 @Controller
 public class CustomerListController {
@@ -24,6 +26,10 @@ public class CustomerListController {
 
     @Autowired
     private AutowireCapableBeanFactory beanFactory;
+
+    @Autowired
+    private ThreadPoolTaskExecutor taskExecutor;
+
 
     @RequestMapping(value = "/", method = GET)
     public String home() {
@@ -42,6 +48,28 @@ public class CustomerListController {
         model.addAttribute("customers", customers);
         return "customer/list";
     }
+
+
+    @RequestMapping(value = "/threadTest", method = GET)
+    public String threadTest(Model model) {
+
+    	taskExecutor.execute(new PrintTask("Thread 1"));
+        taskExecutor.execute(new PrintTask("Thread 2"));
+        taskExecutor.execute(new PrintTask("Thread 3"));
+        taskExecutor.execute(new PrintTask("Thread 4"));
+        taskExecutor.execute(new PrintTask("Thread 5"));
+
+    	Notify notify = new Notify();
+    	beanFactory.autowireBean(notify);
+    	String ret = notify.getMessage();
+    	System.out.println(ret);
+
+    	List<Customer> customers = customerService.findAll();
+        model.addAttribute("customers", customers);
+        return "customer/list";
+    }
+
+
 
     @RequestMapping(value = "/customer/{customerId}", method = GET)
     public String showCustomerDetail(@PathVariable int customerId, Model model)
