@@ -37,6 +37,10 @@ $(function() {
         	   console.log(greeting);
  	      });
 
+           stompClient.subscribe('/user/queue/errors', function (error) { // エラー通知用のQueue(/user/queue/errors)を購読
+               alert(JSON.parse(error.body).message);
+           });
+
 	 };
 
 
@@ -66,6 +70,14 @@ $(function() {
 	       stompClient.send("/app/hello2", {}, "message");
 
 	});
+
+	$('#send3').on('click',function(){
+//	     alert("test");
+
+	       stompClient.send("/app/hello3", {}, "error");
+
+	});
+
 
 
     stompClient.connect("guest", "guest", connectCallback, errorCallback);
@@ -114,6 +126,7 @@ $(function() {
 <input type="button" id="connect" value="connect">
 <input type="button" id="send" value="send">
 <input type="button" id="send2" value="send2">
+<input type="button" id="send3" value="send3">
 
 </body>
 </html>

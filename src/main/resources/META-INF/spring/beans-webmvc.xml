@@ -47,7 +47,7 @@
             </websocket:handshake-interceptors>
             <websocket:sockjs session-cookie-needed="true" />
         </websocket:stomp-endpoint>
-        <websocket:simple-broker prefix="/topic, /message" />
+        <websocket:simple-broker prefix="/topic, /queue, /message" />
     </websocket:message-broker>
 
 </beans>
