@@ -22,6 +22,10 @@ angular.module('myApp', ['ngWebworker'])
 
 
   .controller('MyController', ['$scope', '$http', 'Webworker',function($scope, $http, Webworker) {
+
+this.addPane = function() {
+  };
+
     $scope.onclick = function() {
       console.log("onclick1");
       
@@ -48,6 +52,85 @@ myWorker.run($scope.value).then(function(result) {
 });
 
     };
+
+
+    $scope.onclick3 = function() {
+      console.log("onclick3");
+
+console.log("httptmp", httptmp);
+
+httptmp = $http;
+console.log("httptmp", httptmp);
+
+var worker = new Worker("scripts/worker_test.js");
+worker.onmessage = function(event) {//ワーカーから受け取り
+    var BB = event.data;
+    console.log("BB", BB);
+    BB.obj = this.addPane;
+    console.log(this);
+    worker.postMessage("run");
+
+
+
+}
+worker.postMessage("start");
+var d1 = new Date();
+while (true) {
+  const d2 = new Date();
+  if (d2 - d1 > 5000) {
+    break;
+  }
+}
+
+
+    };
+
+
+    $scope.onclick4 = function() {
+      console.log("onclick4");
+
+console.log(new Date());
+
+var worker = new Worker("scripts/worker_test2.js");
+worker.onmessage = function(event) {//ワーカーから受け取り
+    var BB = event.data;
+    console.log("BB", BB);
+console.log(new Date());  
+
+}
+worker.postMessage("start");
+
+
+      $http({
+        method: 'POST',
+        url: 'http_request.php',
+        data: { name: $scope.name }
+      })
+      .success(function(data, status, headers, config){
+console.log("success");
+console.log(new Date());
+var d1 = new Date();
+while (true) {
+  const d2 = new Date();
+  if (d2 - d1 > 5000) {
+    break;
+  }
+}
+        $scope.result = data;
+      })
+      .error(function(data, status, headers, config){
+console.log("error");
+        $scope.result = '!!通信に失敗しました!!';
+      });
+
+
+
+
+    };
+
+
+
+
 
 
   }]);

@@ -6,6 +6,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
 <script src="scripts/http_request.js"></script>
 <script src="scripts/ng-webworker.js"></script>
+<script src="scripts/config.js"></script>
+
 </head>
 <body ng-controller="MyController">
 <form name="myForm" novalidate>
@@ -13,6 +15,8 @@
   <input id="name" name="name" type="text" ng-model="name" />
   <button ng-click="onclick()">送信</button>
   <button ng-click="onclick2()">送信2</button>
+  <button ng-click="onclick3()">送信3</button>
+  <button ng-click="onclick4()">送信4</button>
   
 </form>
 <div>{{result}}</div>
