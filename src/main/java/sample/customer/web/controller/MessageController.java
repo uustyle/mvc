@@ -1,5 +1,8 @@
 package sample.customer.web.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -23,6 +26,12 @@ public class MessageController {
     @SendTo("/topic/greetings")
     @ResponseBody
     public Greeting greeting(HelloMessage message) throws Exception {
+    	//現在日時取得
+        Calendar c = Calendar.getInstance();
+
+        //フォーマットを指定
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        System.out.println(sdf.format(c.getTime()));
          return new Greeting("Hello, " + message.getName() + "!");
    }
 

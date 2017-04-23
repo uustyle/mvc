@@ -4,6 +4,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -32,8 +35,10 @@ public class CustomerListController {
 
 
     @RequestMapping(value = "/", method = GET)
-    public String home() {
-        return "forward:/customer";
+    public String home(HttpSession session, HttpServletRequest request) {
+
+    	session.setAttribute("test", "test1");
+    	return "forward:/customer";
     }
 
     @RequestMapping(value = "/customer", method = GET)

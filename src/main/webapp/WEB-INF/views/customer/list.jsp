@@ -14,14 +14,17 @@
 
 <script src="<c:url value="/resources/js/sockjs.js" />"></script>
 <script src="<c:url value="/resources/js/stomp.js" />"></script>
+<script src="<c:url value="/resources/js/Concurrent.Thread-full-20090713.js" />"></script>
 
 <script>
 $(function() {
-
 	var socket = new SockJS("/mvc/endPoint.do");
 // 	 var socket = new WebSocket('ws://' + location.host + '/mvc/endPoint.do');
 	 var stompClient = Stomp.over(socket);
 
+/* 	var socket;
+	var stompClient;
+ */
 	 // callback function to be called when stomp client is connected to server (see Note 2)
 	 var connectCallback = function() {
 	      alert("connected!");
@@ -52,8 +55,13 @@ $(function() {
 
 	$('#connect').on('click',function(){
 
+		this.socket = new SockJS("/mvc/endPoint.do");
+//	 	 var socket = new WebSocket('ws://' + location.host + '/mvc/endPoint.do');
+		 this.stompClient = Stomp.over(this.socket);
+
 //    	stompClient.connect("guest", "guest", connectCallback, errorCallback);
-	     console.log("connectCallback",connectCallback,stompClient);
+		this.stompClient.connect("guest", "guest", connectCallback, errorCallback);
+	     console.log("connectCallback",connectCallback,this.stompClient);
 
 	});
 
@@ -78,11 +86,143 @@ $(function() {
 
 	});
 
+	$('#sendcopy').on('click',function(){
+
+console.log("stompClient",stompClient);
 
 
-    stompClient.connect("guest", "guest", connectCallback, errorCallback);
+		this.replacer = function(key, val) {
+	    	console.log("replacer");
+		    return typeof val == 'function' ? val.toString() : val
+		};
+
+		this.parser = function(key, val) {
+	  		try {
+				return (typeof val == 'string'
+					  && val.match(/^function [\s\S]+?}$/)) ? eval('(' + val + ')') : val
+			} catch(e) {
+				return val
+			}
+		};
+
+		var json = JSON.stringify(stompClient, this.replacer());
+		console.log("json",json);
+
+		var obj = JSON.parse(json, this.parser());
+		console.log("obj",obj);
+		obj.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+	});
+
+
+
+	 var connectCallback2 = function() {
+	      alert("connected2!");
+	 };
+
+	 var errorCallback2 = function(error) {
+	      // display the error's message header:
+	      alert(error.headers);
+	 };
+
+	 var disconnectCallback2 = function() {
+	      alert("disconnectCallback2!");
+	 };
+
+	 var socket2;
+		var stompClient2;
+	$('#sendcopy2').on('click',function(){
+
+		console.log("sendcopy2");
+
+		socket2 = new SockJS("/mvc/endPoint.do");
+//	 	 var socket = new WebSocket('ws://' + location.host + '/mvc/endPoint.do');
+		 stompClient2 = Stomp.over(socket2);
+
+		stompClient2.connect("guest", "guest", connectCallback2, errorCallback2);
+
+	});
+
+	$('#disconnect1').on('click',function(){
+
+		stompClient.disconnect(disconnectCallback2);
+
+	});
+
+	$('#disconnect2').on('click',function(){
+
+		stompClient2.disconnect(disconnectCallback2);
+
+	});
+
+	$('#worker').on('click',function(){
+
+		var worker = new Worker("resources/js/worker_test.js");
+		worker.onmessage = function(event) {//ワーカーから受け取り
+		    var BB = event.data;
+		    console.log("BB", BB);
+		}
+		worker.postMessage("start");
+	});
+
+
+	$('#worker3').on('click',function(){
+
+		console.log("worker3 new:", new Date());
+		var worker = new Worker("resources/js/worker_test3.js");
+		worker.onmessage = function(event) {//ワーカーから受け取り
+		    var BB = event.data;
+		    console.log("BB", BB);
+			postMessage({"ret":"0","data":self.obj});
+		}
+
+		var d1 = new Date();
+/* 		while (true) {
+		  // Concurrent.Thread.yield();
+		  var d2 = new Date();
+		  if (d2 - d1 > 5000) {
+		    break;
+		  }
+		} */
+
+	});
+
+
+	var socket3;
+	var stompClient3;
+	 var send3 = function(id, stompClient3, JSON) {
+		 stompClient3.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+	 };
+
+	 var connectCallback3 = function() {
+	      alert("connected3!");
+
+	      Concurrent.Thread.create(send3, 1,stompClient3, JSON);
+	 };
+
+	 var errorCallback3 = function(error) {
+	      // display the error's message header:
+	      alert(error.headers);
+	 };
+
+
+
+	$('#Concurrent').on('click',function(){
+
+		console.log("Concurrent");
+
+		socket3 = new SockJS("/mvc/endPoint.do");
+		stompClient3 = Stomp.over(socket3);
+
+		stompClient3.connect("guest", "guest", connectCallback3, errorCallback3);
+
+	});
+
+
+
+	//stompClient.connect("guest", "guest", connectCallback, errorCallback);
 
 })
+
 </script>
 
 
@@ -127,6 +267,17 @@ $(function() {
 <input type="button" id="send" value="send">
 <input type="button" id="send2" value="send2">
 <input type="button" id="send3" value="send3">
+<input type="button" id="sendcopy" value="sendcopy">
+<input type="button" id="sendcopy2" value="sendcopy2">
+<input type="button" id="disconnect1" value="disconnect1">
+<input type="button" id="disconnect2" value="disconnect2">
+
+<input type="button" id="worker" value="worker">
+<input type="button" id="worker3" value="worker3">
+
+<input type="button" id="Concurrent" value="Concurrent">
+
+
 
 </body>
 </html>
