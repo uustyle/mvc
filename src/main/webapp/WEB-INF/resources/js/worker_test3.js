@@ -7,6 +7,12 @@ self.onmessage = function(event) {
 
 	console.log(self.obj);
 //    setTimeout('mes()',1000);
+	self.obj.socket2 = new SockJS("/mvc/endPoint.do");
+	self.obj.stompClient2 = Stomp.over(self.obj.socket2);
+
+	self.obj.stompClient2.connect("guest", "guest", self.connectCallback2, self.errorCallback2);
+
+
 }
 
 self.mes = function() {
@@ -17,7 +23,7 @@ self.mes = function() {
 	setTimeout('self.mes()',1000);
 }
 
-var connectCallback2 = function(frame) {
+self.connectCallback2 = function(frame) {
 	console.log("connectCallback2:", new Date());
 
     console.log("connected2!", frame);
@@ -25,18 +31,14 @@ var connectCallback2 = function(frame) {
   	  console.log("ok1");
   	  console.log(JSON.parse(greeting.body).content);
     });
-//	postMessage({"ret":"0","data":self.obj});
-  setTimeout('mes()',1000);
+    self.postMessage({"ret":"0","data":"dt"});
+  setTimeout('self.mes()',1000);
 
 };
 
-var errorCallback2 = function(error) {
+self.errorCallback2 = function(error) {
     // display the error's message header:
 	console.log(error.headers);
 };
 
-self.obj.socket2 = new SockJS("/mvc/endPoint.do");
-self.obj.stompClient2 = Stomp.over(self.obj.socket2);
-
-self.obj.stompClient2.connect("guest", "guest", connectCallback2, errorCallback2);
 

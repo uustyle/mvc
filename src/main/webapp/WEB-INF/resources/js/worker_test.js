@@ -1,4 +1,3 @@
-importScripts("./jquery-1.9.0.min.js");
 importScripts("./sockjs.js");
 importScripts("./stomp.js");
 

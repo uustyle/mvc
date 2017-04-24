@@ -169,14 +169,36 @@ console.log("stompClient",stompClient);
 
 		console.log("worker3 new:", new Date());
 		var worker = new Worker("resources/js/worker_test3.js");
-		worker.onmessage = function(event) {//ワーカーから受け取り
-		    var BB = event.data;
-		    console.log("BB", BB);
-			postMessage({"ret":"0","data":self.obj});
-		}
+ 		worker.onmessage = function(event) {//ワーカーから受け取り
 
-		var d1 = new Date();
-/* 		while (true) {
+console.log("wait start", new Date());
+ 			var BB = event.data;
+		    console.log("BB", BB);
+			var d1 = new Date();
+	 		while (true) {
+			  // Concurrent.Thread.yield();
+			  var d2 = new Date();
+			  if (d2 - d1 > 5000) {
+			    break;
+			  }
+			}
+	 		console.log("wait end", new Date());
+
+		}
+		worker.postMessage({"ret":"0","data":self.obj});
+
+		console.log("ajax start", new Date());
+		$.ajax({
+			   type: "GET",
+			   url: "/mvc/api/text/",
+			   success: function(msg){
+					console.log("ajax success", new Date());
+			   }
+			 });
+		console.log("ajax end", new Date());
+
+/* 		var d1 = new Date();
+ 		while (true) {
 		  // Concurrent.Thread.yield();
 		  var d2 = new Date();
 		  if (d2 - d1 > 5000) {
