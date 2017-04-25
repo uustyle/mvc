@@ -30,7 +30,7 @@ public class MessageController {
         Calendar c = Calendar.getInstance();
 
         //フォーマットを指定
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         System.out.println(sdf.format(c.getTime()));
          return new Greeting("Hello, " + message.getName() + "!");
    }

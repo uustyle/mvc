@@ -31,8 +31,12 @@ self.connectCallback2 = function(frame) {
   	  console.log("ok1");
   	  console.log(JSON.parse(greeting.body).content);
     });
+
     self.postMessage({"ret":"0","data":"dt"});
   setTimeout('self.mes()',1000);
+	self.obj.stompClient2.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+	self.obj.stompClient2.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+	self.obj.stompClient2.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
 
 };
 
