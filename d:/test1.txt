@@ -1,0 +1,1 @@
+{struct1=batch.FldDto@7a46a697}

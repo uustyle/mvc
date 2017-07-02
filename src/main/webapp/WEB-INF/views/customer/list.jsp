@@ -197,14 +197,14 @@ console.log("wait start", new Date());
 			 });
 		console.log("ajax end", new Date());
 
-/* 		var d1 = new Date();
+ 		var d1 = new Date();
  		while (true) {
 		  // Concurrent.Thread.yield();
 		  var d2 = new Date();
 		  if (d2 - d1 > 5000) {
 		    break;
 		  }
-		} */
+		}
 
 	});
 
