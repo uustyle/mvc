@@ -66,6 +66,8 @@ public class TestCls {
 
 		ByteBuffer buf = ByteBuffer.wrap(bytedt);
 
+		sdto = getStructinit("struct1");
+
 		converter.toObj(sdto, buf);
 
 

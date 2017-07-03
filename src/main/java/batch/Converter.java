@@ -5,6 +5,7 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Map;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -91,13 +92,15 @@ public class Converter {
 
 				if (StringUtils.isEmpty(fldDto.getArrayflg())) {
 
-					this.toObj(fldDto,fldDto.getValue(),buf);
-
+					Object value = this.toObj(fldDto,buf);
+					fldDto.setValue(value);
 				} else {
 
+					fldDto.setValue(new Object[Integer.parseInt( fldDto.getArrayflg())]);
 					for(int i = 0; i< Integer.parseInt( fldDto.getArrayflg()); i++) {
 
-						this.toObj(fldDto, Array.get(fldDto.getValue(), i) , buf);
+						Object value = this.toObj(fldDto , buf);
+						Array.set(fldDto.getValue(), i, value);
 					}
 				}
 			}
@@ -109,8 +112,8 @@ public class Converter {
 	}
 
 
-	public void toObj(FldDto fldDto, Object value, ByteBuffer buf){
-
+	public Object toObj(FldDto fldDto, ByteBuffer buf){
+		Object value = null;
 		if (1 == fldDto.getType()) {
 			//byte
 			value = buf.get();
@@ -123,6 +126,7 @@ public class Converter {
 		    buf.get(byteArray);
 			value = new String(byteArray);
 		}
+		return value;
 	}
 
 
@@ -142,7 +146,9 @@ public class Converter {
 
 			} else {
 
-				System.out.println(fldDto.getName() + "=" + Arrays.asList(fldDto.getValue()));
+
+				System.out.println(fldDto.getName() + "=" + ArrayUtils.toString(fldDto.getValue()));
+//				System.out.println(fldDto.getName() + "=" + Arrays.asList(ArrayUtils.toObject(fldDto.getValue())));
 
 //				if (StringUtils.isEmpty(fldDto.getArrayflg())) {
 //
