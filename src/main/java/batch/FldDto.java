@@ -1,6 +1,6 @@
 package batch;
 
-public class FldDto {
+public class FldDto implements Cloneable{
 
 	private String name;
 
@@ -13,6 +13,21 @@ public class FldDto {
 	private int length;
 
 	private Object value;
+
+
+	@Override
+    public FldDto clone(){
+
+		FldDto dto = new FldDto();
+        try {
+        	dto = (FldDto)super.clone();
+        	dto.setValue(new Object[2]);
+//           comB.nic = this.nic.clone();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return dto;
+    }
 
 	public String getName() {
 		return name;
