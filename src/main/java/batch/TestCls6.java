@@ -21,6 +21,9 @@ public class TestCls6 {
 
 		TestCls6 obj = new TestCls6();
 		obj.init();
+
+		obj.disp_mae(obj.list);
+
 		obj.disp(obj.list);
 		obj.disp(obj.list2);
 
@@ -34,16 +37,16 @@ public class TestCls6 {
 		info = new ParamSetInfo("member1", 2, 2, 2);
 		list.add(info);
 
-		info = new ParamSetInfo("member2", 2, 2, 2);
+		info = new ParamSetInfo("member2", 1, 2, 2);
 		list.add(info);
 
 		info = new ParamSetInfo("member2", 2, 2, 2);
 		list.add(info);
 
-		info = new ParamSetInfo("member3", 3, 3, 3);
+		info = new ParamSetInfo("member3", 1, 3, 3);
 		list.add(info);
 
-		info = new ParamSetInfo("member3", 3, 3, 3);
+		info = new ParamSetInfo("member3", 2, 3, 3);
 		list.add(info);
 
 
@@ -57,6 +60,12 @@ public class TestCls6 {
 		list2.add(info2);
 
 	}
+
+	public <T extends IParamSetInfo>void disp_mae(List<T> list) {
+
+		disp(list);
+	}
+
 
 	public <T extends IParamSetInfo>void disp(List<T> list) {
 
