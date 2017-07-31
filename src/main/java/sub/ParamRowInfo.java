@@ -3,7 +3,7 @@ package sub;
 import batch2.ElementInfo;
 
 
-public class ParamRowInfo {
+public class ParamRowInfo{
 
 	private String membername;
 	private ElementInfo element;

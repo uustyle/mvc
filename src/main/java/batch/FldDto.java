@@ -1,5 +1,11 @@
 package batch;
 
+import java.nio.ByteBuffer;
+
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+
 public class FldDto implements Cloneable{
 
 	private String name;
@@ -7,6 +13,10 @@ public class FldDto implements Cloneable{
 	private int type;
 
 	private String arrayflg;
+
+	private String refArrayflg;
+
+
 
 	private int size;
 
@@ -28,6 +38,35 @@ public class FldDto implements Cloneable{
         }
         return dto;
     }
+
+
+
+
+
+
+
+
+//	public void toByte(ByteBuffer buf){
+//
+//		if (1 == type) {
+//			//byte
+//			buf.put(NumberUtils.toByte(ObjectUtils.toString(value)));
+//
+//		} else if (2 == type) {
+//			//int
+//			buf.putInt(NumberUtils.toInt(ObjectUtils.toString(value)));
+//
+//		} else if (3 == type) {
+//			//String
+//			buf.put(ObjectUtils.toString(value).getBytes());
+//		} else {
+//			throw new RuntimeException("type err");
+//		}
+//	}
+
+
+
+
 
 	public String getName() {
 		return name;
@@ -80,7 +119,13 @@ public class FldDto implements Cloneable{
 	}
 
 
+	public String getRefArrayflg() {
+		return refArrayflg;
+	}
 
+	public void setRefArrayflg(String refArrayflg) {
+		this.refArrayflg = refArrayflg;
+	}
 
 
 }

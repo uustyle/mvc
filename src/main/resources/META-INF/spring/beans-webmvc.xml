@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	    xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -12,10 +13,13 @@
 		http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/websocket
-		http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+		http://www.springframework.org/schema/websocket/spring-websocket.xsd
+	     http://www.springframework.org/schema/aop
+	     http://www.springframework.org/schema/aop/spring-aop.xsd">
 
   <context:component-scan base-package="sample.customer.web.controller"/>
   <context:component-scan base-package="sample.user.web.controller"/>
+    <aop:aspectj-autoproxy />
 
   <mvc:annotation-driven
     validator="globalValidator" enable-matrix-variables="true"/>

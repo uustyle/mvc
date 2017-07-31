@@ -7,12 +7,12 @@ public class ParamSetInfo implements IParamSetInfo {
 	int itemEnd;
 	int start;
 
-	public ParamSetInfo(String membername, int itemStart, int itemEnd, int start) {
-		this.membername = membername;
-		this.itemStart = itemStart;
-		this.itemEnd = itemEnd;
-		this.start = start;
-	}
+//	public ParamSetInfo(String membername, int itemStart, int itemEnd, int start) {
+//		this.membername = membername;
+//		this.itemStart = itemStart;
+//		this.itemEnd = itemEnd;
+//		this.start = start;
+//	}
 
 	public String getMembername() {
 		return membername;

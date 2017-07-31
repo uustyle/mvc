@@ -4,21 +4,27 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
+
 import batch2.ElementInfo;
 import batch2.ParamSetInfo;
 import batch2.StructureInfo;
 
-public class ParamRowInfoShelf implements Aggregate {
+public class ParamRowInfoShelf<T> implements Aggregate {
 
 	private StructureInfo structureInfo;
 	private List<ParamSetInfo> paramSetInfoList;
-	private List<ParamRowInfo> paramRowInfoList;
+	private List<T> paramRowInfoList;
+
+	public T create(Class<T> clazz) throws Exception {
+        return clazz.newInstance();
+    }
 
 	public ParamRowInfoShelf(StructureInfo structureInfo,
 			List<ParamSetInfo> paramSetInfoList) {
 		this.structureInfo = structureInfo;
 		this.paramSetInfoList = paramSetInfoList;
-		this.paramRowInfoList = new ArrayList<ParamRowInfo>();
+		this.paramRowInfoList = new ArrayList<T>();
 
 		for(ParamSetInfo paramSetInfo: this.paramSetInfoList) {
 
@@ -36,7 +42,7 @@ public class ParamRowInfoShelf implements Aggregate {
 				paramRowInfo.setItemno(0);
 				paramRowInfo.setValue(elementInfo.getValue());
 
-				paramRowInfoList.add(paramRowInfo);
+				paramRowInfoList.add((T)paramRowInfo);
 
 			} else {
 
@@ -57,7 +63,7 @@ public class ParamRowInfoShelf implements Aggregate {
 						Object value = Array.get(elementInfo.getValue(), array1Index);
 						paramRowInfo.setValue(value);
 
-						paramRowInfoList.add(paramRowInfo);
+						paramRowInfoList.add((T)paramRowInfo);
 
 					} else if (0 != elementInfo.getDimension1() && 0 != elementInfo.getDimension2()){
 
@@ -89,7 +95,7 @@ public class ParamRowInfoShelf implements Aggregate {
 						value = Array.get(value, array2Index);
 						paramRowInfo.setValue(value);
 
-						paramRowInfoList.add(paramRowInfo);
+						paramRowInfoList.add((T)paramRowInfo);
 
 					} else {
 						throw new RuntimeException("");
@@ -101,7 +107,31 @@ public class ParamRowInfoShelf implements Aggregate {
 	}
 
 
-	public ParamRowInfo getParamRowInfoAt(int index) {
+	public ParamRowInfoShelf(StructureInfo structureInfo,
+			List<ParamSetInfo> paramSetInfoList,
+			int tmp) {
+		this(structureInfo, paramSetInfoList);
+
+		List<T> paramRowInfoList2 = new ArrayList<T>();
+
+//		this.structureInfo = structureInfo;
+//		this.paramSetInfoList = paramSetInfoList;
+//
+
+		for(T paramRowInfo: this.paramRowInfoList) {
+
+			ParamRowInfo2 paramRowInfo2 = new ParamRowInfo2();
+			BeanUtils.copyProperties(paramRowInfo, paramRowInfo2);
+			paramRowInfo2.setDmy(1);
+			paramRowInfoList2.add((T)paramRowInfo2);
+		}
+		this.paramRowInfoList = paramRowInfoList2;
+
+	}
+
+
+
+	public T getParamRowInfoAt(int index) {
 		return paramRowInfoList.get(index);
 	}
 
@@ -111,7 +141,7 @@ public class ParamRowInfoShelf implements Aggregate {
 
 
 	public Iterator iterator(){
-		return new ParamRowInfoShelfIterator(this);
+		return new ParamRowInfoShelfIterator<T>(this);
 
 	}
 

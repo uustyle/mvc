@@ -32,24 +32,24 @@ public class TestCls {
 		Map<String,StructDto> structMap = new HashMap<String,StructDto>();
 
 //		StructDto sdto = getStruct("struct1");
-//		StructDto sdto2 = getStructArray("struct1");
+		StructDto sdto2 = getStructArray("struct2");
 
-		StructDto sdto = getStruct("struct1");
-		StructDto sdto2 = getStruct("struct2");
-
-		FldDto fdto = new FldDto();
-		fdto.setName("fld4");
-		fdto.setType(4);
-		fdto.setSize(4);
-		fdto.setArrayflg(null);
-		fdto.setValue(sdto2);
-		sdto.getFlds().put(fdto.getName(), fdto);
-		sdto.setSize(36);
-
-		structMap.put("struct1", sdto2);
+//		StructDto sdto = getStruct("struct1");
+//		StructDto sdto2 = getStruct("struct2");
+//
+//		FldDto fdto = new FldDto();
+//		fdto.setName("fld4");
+//		fdto.setType(4);
+////		fdto.setSize(4);
+//		fdto.setArrayflg(null);
+//		fdto.setValue(sdto2);
+//		sdto.getFlds().put(fdto.getName(), fdto);
+//		sdto.setSize(40);
+//
+//		structMap.put("struct1", sdto2);
 
 		Converter converter = new Converter();
-		byte[] bytedt = converter.toByte(sdto);
+		byte[] bytedt = converter.toByte(sdto2);
 
 		FileUtils.writeByteArrayToFile(new File("bytefile.out"), bytedt);
 
@@ -66,9 +66,9 @@ public class TestCls {
 
 		ByteBuffer buf = ByteBuffer.wrap(bytedt);
 
-		sdto = getStructinit("struct1");
+		sdto2 = getStructinit("struct1");
 
-		converter.toObj(sdto, buf);
+		converter.toObj(sdto2, buf);
 
 
 
@@ -184,7 +184,7 @@ public class TestCls {
 		dto = new FldDto();
 		dto.setName("fld2");
 		dto.setType(2);
-		dto.setSize(4);
+		dto.setSize(8);
 		dto.setArrayflg("2");
 		int tmp[] = {1,2};
 		dto.setValue(tmp);
@@ -200,9 +200,29 @@ public class TestCls {
 
 		fldMap.put(dto.getName(), dto);
 
+
+		dto = new FldDto();
+		dto.setName("fld4");
+		dto.setType(2);
+		dto.setSize(4);
+//		dto.setArrayflg(null);
+		dto.setValue(2);
+		fldMap.put(dto.getName(), dto);
+
+		dto = new FldDto();
+		dto.setName("fld5");
+		dto.setType(2);
+		dto.setSize(4);
+		dto.setRefArrayflg("fld4");
+		int tmp2[] = {1,2};
+		dto.setValue(tmp2);
+		fldMap.put(dto.getName(), dto);
+
+
+
 		StructDto sdto = new StructDto();
 		sdto.setName(name);
-		sdto.setSize(22);
+		sdto.setSize(100);
 		sdto.setFlds(fldMap);
 
 		return sdto;

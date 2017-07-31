@@ -7,6 +7,7 @@ import java.util.Map;
 
 import sub.Iterator;
 import sub.ParamRowInfo;
+import sub.ParamRowInfo2;
 import sub.ParamRowInfoShelf;
 
 public class TestMain {
@@ -29,7 +30,7 @@ public class TestMain {
 
 	void iteratorTest() {
 
-		ParamRowInfoShelf paramRowInfoShelf = new ParamRowInfoShelf(this.structureInfo, this.paramSetInfoList);
+		ParamRowInfoShelf<ParamRowInfo> paramRowInfoShelf = new ParamRowInfoShelf<ParamRowInfo>(this.structureInfo, this.paramSetInfoList);
 		Iterator it = paramRowInfoShelf.iterator();
 		while(it.hasNext()) {
 
@@ -37,6 +38,17 @@ public class TestMain {
 			System.out.println(paramRowInfo.toString());
 
 		}
+
+		ParamRowInfoShelf<ParamRowInfo2> paramRowInfoShelf2 = new ParamRowInfoShelf<ParamRowInfo2>(this.structureInfo, this.paramSetInfoList, 1);
+		Iterator it2 = paramRowInfoShelf2.iterator();
+		while(it2.hasNext()) {
+
+			ParamRowInfo2 paramRowInfo2 = (ParamRowInfo2)it2.next();
+			System.out.println(paramRowInfo2.toString());
+
+		}
+
+
 
 
 	}

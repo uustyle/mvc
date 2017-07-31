@@ -1,11 +1,11 @@
 package sub;
 
-public class ParamRowInfoShelfIterator implements Iterator{
+public class ParamRowInfoShelfIterator<T> implements Iterator{
 
-	private ParamRowInfoShelf paramRowInfoShelf;
+	private ParamRowInfoShelf<T> paramRowInfoShelf;
 	private int index;
 
-	public ParamRowInfoShelfIterator(ParamRowInfoShelf paramRowInfoShelf) {
+	public ParamRowInfoShelfIterator(ParamRowInfoShelf<T> paramRowInfoShelf) {
 		this.paramRowInfoShelf = paramRowInfoShelf;
 		this.index = 0;
 	}
@@ -21,7 +21,7 @@ public class ParamRowInfoShelfIterator implements Iterator{
 
 
 	public Object next(){
-		ParamRowInfo paramRowInfo = this.paramRowInfoShelf.getParamRowInfoAt(this.index);
+		T paramRowInfo = this.paramRowInfoShelf.getParamRowInfoAt(this.index);
 		this.index ++;
 		return paramRowInfo;
 	}

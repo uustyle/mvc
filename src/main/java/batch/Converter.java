@@ -30,13 +30,15 @@ public class Converter {
 
 			} else {
 
-				if (StringUtils.isEmpty(fldDto.getArrayflg())) {
+				int dimNum[] = getDimNum(sDto, fldDto);
+
+				if (dimNum[0] == 0) {
 
 					this.toByte(fldDto,fldDto.getValue(),buf);
 
 				} else {
 
-					for(int i = 0; i< Integer.parseInt( fldDto.getArrayflg()); i++) {
+					for(int i = 0; i< dimNum[0]; i++) {
 
 						this.toByte(fldDto, Array.get(fldDto.getValue(), i) , buf);
 					}
@@ -57,6 +59,9 @@ public class Converter {
 	}
 
 
+
+
+
 	public void toByte(FldDto fldDto, Object value, ByteBuffer buf){
 
 		if (1 == fldDto.getType()) {
@@ -70,7 +75,24 @@ public class Converter {
 		} else if (3 == fldDto.getType()) {
 			//String
 			buf.put(ObjectUtils.toString(value).getBytes());
+		} else {
+			throw new RuntimeException("type err");
 		}
+	}
+
+
+	public int[] getDimNum(StructDto sDto, FldDto fldDto) {
+
+		int ret[] = {0,0};
+		if (!StringUtils.isEmpty(fldDto.getRefArrayflg())) {
+			FldDto fldDtoTmp = sDto.getFlds().get(fldDto.getRefArrayflg());
+			ret[0] = NumberUtils.toInt(ObjectUtils.toString(fldDtoTmp.getValue()));
+		}
+		else if (!StringUtils.isEmpty(fldDto.getArrayflg())) {
+			ret[0] = NumberUtils.toInt(fldDto.getArrayflg());
+		}
+		return ret;
+
 	}
 
 
