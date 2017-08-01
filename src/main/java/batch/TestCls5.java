@@ -23,55 +23,35 @@ public class TestCls5 {
 
 	public void init() {
 
-		//member 単位
-		Map<String, Map<String, List<ParamSaveInfo>>> paramSaveInfo = new HashMap<String, Map<String, List<ParamSaveInfo>>>();
-
-		//member 単位
-		Map<String, List<ParamSaveInfo>> paramSaveInfoMapMember = new HashMap<String, List<ParamSaveInfo>>();
-
 		List<ParamSaveInfo> list = new ArrayList<ParamSaveInfo>();
-		ParamSaveInfo info = new ParamSaveInfo("member1", 1);
+		ParamSaveInfo info = new ParamSaveInfo("member1", "KEY1", 1);
 		list.add(info);
-		info = new ParamSaveInfo("member2", 2);
+		info = new ParamSaveInfo("member2", "KEY2_{0}", 2);
 		list.add(info);
-		info = new ParamSaveInfo("member2", 3);
+		info = new ParamSaveInfo("member2", "KEY2_{1}", 3);
 		list.add(info);
-		paramSaveInfoGroup.put("default", list);
 
+		Map<String,Object> map = new HashMap<String,Object>();
+		for(ParamSaveInfo paramSaveInfo: list) {
 
-		list = new ArrayList<ParamSaveInfo>();
-		info = new ParamSaveInfo("struct1.member11", 1);
-		list.add(info);
-		info = new ParamSaveInfo("struct1.member22", 2);
-		list.add(info);
-		info = new ParamSaveInfo("struct1.member22", 3);
-		list.add(info);
-		paramSaveInfoGroup.put("struct1", list);
+			map.put(paramSaveInfo.getKey() , paramSaveInfo.getValue());
+		}
 
+//item_noとキーワードからkeyを作成
+		String keys[] = {"KEY1", "KEY2","KEY2_{0}"};
+		for(int i = 0; i< keys.length; i++) {
+			Object value = map.get(keys[i]);
 
+			if ( value == null ) {
+//valueがnullなら、構造体に設定しない
+//save:SPMから取得したデータを変えないようにする
+			} else {
 
+			}
+
+		}
 
 	}
-
-	public void init() {
-
-		ParamSaveInfo info = new ParamSaveInfo("member1", 1);
-		this.list.add(info);
-		info = new ParamSaveInfo("member2", 2);
-		this.list.add(info);
-		info = new ParamSaveInfo("member2", 3);
-		this.list.add(info);
-
-		info = new ParamSaveInfo("struct1.member11", 1);
-		this.list.add(info);
-		info = new ParamSaveInfo("struct1.member22", 2);
-		this.list.add(info);
-		info = new ParamSaveInfo("struct1.member22", 3);
-		this.list.add(info);
-
-	}
-
-
 
 
 
