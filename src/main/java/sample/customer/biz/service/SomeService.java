@@ -1,11 +1,12 @@
 package sample.customer.biz.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public class SomeService  {
+@Component
+public class SomeService implements ISomeService {
 
-    public String message() {
+    public String getMessage(String param) {
+    	System.out.println("aa");
         return "message";
     }
 

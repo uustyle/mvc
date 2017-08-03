@@ -11,7 +11,7 @@ public class ParamImplService extends AbstraceParamTemplate implements IParam{
 
 
 	public String getParamType() {
-		someService.message();
+		someService.getMessage("aa");
 		return "global";
 	}
 

@@ -2,13 +2,17 @@ package sample.customer.web.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import sample.customer.biz.service.ISomeService;
 import sample.customer.biz.service.ParamImplService;
-import sample.customer.biz.service.SomeService;
 
 @Controller
 public class RestfulController {
@@ -17,7 +21,7 @@ public class RestfulController {
 	private ParamImplService paramImplService;
 
 	@Autowired
-	private SomeService someService;
+	private ISomeService someService;
 
 //    @RequestMapping(value = "/", method = GET)
     @RequestMapping(value = "/api/text/", method = GET)
@@ -50,8 +54,15 @@ public class RestfulController {
 @ResponseBody
 public String getTestMember3() {
 
-//	  paramImplService.globalMessage();
-    return someService.message();
+	ServletRequestAttributes req = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+    HttpSession session = req.getRequest().getSession(false);
+    if (session == null) {
+    	session = req.getRequest().getSession();
+    }
+    session.setAttribute("key1", "aaa");
+
+    //	  paramImplService.globalMessage();
+    return someService.getMessage("1");
 
 }
 

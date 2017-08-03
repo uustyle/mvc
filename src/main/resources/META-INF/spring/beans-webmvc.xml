@@ -4,7 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	    xmlns:aop="http://www.springframework.org/schema/aop"
+		    xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -18,11 +18,15 @@
 	     http://www.springframework.org/schema/aop/spring-aop.xsd">
 
   <context:component-scan base-package="sample.customer.web.controller"/>
-  <context:component-scan base-package="sample.user.web.controller"/>
-    <aop:aspectj-autoproxy />
+
 
   <mvc:annotation-driven
     validator="globalValidator" enable-matrix-variables="true"/>
+
+	<context:annotation-config/>
+<aop:aspectj-autoproxy />
+<bean id="paramAspect" class="sample.customer.biz.service.aop.ParamAspect" />
+
 
   <!-- Static Resourceの設定 -->
   <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
@@ -53,5 +57,14 @@
         </websocket:stomp-endpoint>
         <websocket:simple-broker prefix="/topic, /queue, /message" />
     </websocket:message-broker>
+
+
+<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/**"/>
+        <bean class="sample.customer.web.controller.handler.RequestInterceptor" />
+    </mvc:interceptor>
+  </mvc:interceptors>
+
 
 </beans>

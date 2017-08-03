@@ -1,8 +1,9 @@
 package sample.customer.biz.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public abstract class AbstraceParamTemplate  {
 
 	@Autowired
@@ -12,7 +13,7 @@ public abstract class AbstraceParamTemplate  {
 
     public void message() {
 
-		someService.message();
+		someService.getMessage("a");
     	System.out.println(getParamType());
     }
 

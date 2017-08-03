@@ -20,7 +20,7 @@ public class TestCls6 {
 		// TODO 自動生成されたメソッド・スタブ
 
 		TestCls6 obj = new TestCls6();
-		obj.init();
+//		obj.init();
 
 		obj.disp_mae(obj.list);
 
@@ -29,37 +29,37 @@ public class TestCls6 {
 
 	}
 
-	public void init() {
-
-		ParamSetInfo info = new ParamSetInfo("member1", 1, 1, 1);
-		list.add(info);
-
-		info = new ParamSetInfo("member1", 2, 2, 2);
-		list.add(info);
-
-		info = new ParamSetInfo("member2", 1, 2, 2);
-		list.add(info);
-
-		info = new ParamSetInfo("member2", 2, 2, 2);
-		list.add(info);
-
-		info = new ParamSetInfo("member3", 1, 3, 3);
-		list.add(info);
-
-		info = new ParamSetInfo("member3", 2, 3, 3);
-		list.add(info);
-
-
-		ParamSetInfo2 info2 = new ParamSetInfo2("member11", 11);
-		list2.add(info2);
-
-		info2 = new ParamSetInfo2("member22", 22);
-		list2.add(info2);
-
-		info2 = new ParamSetInfo2("member33", 33);
-		list2.add(info2);
-
-	}
+//	public void init() {
+//
+//		ParamSetInfo info = new ParamSetInfo("member1", 1, 1, 1);
+//		list.add(info);
+//
+//		info = new ParamSetInfo("member1", 2, 2, 2);
+//		list.add(info);
+//
+//		info = new ParamSetInfo("member2", 1, 2, 2);
+//		list.add(info);
+//
+//		info = new ParamSetInfo("member2", 2, 2, 2);
+//		list.add(info);
+//
+//		info = new ParamSetInfo("member3", 1, 3, 3);
+//		list.add(info);
+//
+//		info = new ParamSetInfo("member3", 2, 3, 3);
+//		list.add(info);
+//
+//
+//		ParamSetInfo2 info2 = new ParamSetInfo2("member11", 11);
+//		list2.add(info2);
+//
+//		info2 = new ParamSetInfo2("member22", 22);
+//		list2.add(info2);
+//
+//		info2 = new ParamSetInfo2("member33", 33);
+//		list2.add(info2);
+//
+//	}
 
 	public <T extends IParamSetInfo>void disp_mae(List<T> list) {
 

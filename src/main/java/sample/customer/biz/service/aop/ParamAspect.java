@@ -1,4 +1,4 @@
-package sample.customer.biz.service;
+package sample.customer.biz.service.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -8,21 +8,24 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-@Aspect
 @Component
+@Aspect
 public class ParamAspect {
 
 	// 注意：説明の都合上、DAOのメソッド名を"2.1 SpringのDI"のサンプルとは変えています。
 	// findByProductName ---> findProduct
-//
-	@Before("execution(* message())")
+
+//	@Before("execution(public * *(..))")
+//	@Before("execution(public * *(..))")
+//	@Before("execution(*  getTestMember3(..))")
+	@Before("execution(*  getMessage(..))")
 	public void before(JoinPoint jp) {
 		// メソッド開始時にWeavingするAdvice
 		System.out.println("Hello Before! *** メソッドが呼ばれる前に出てくるよ!");
 		Signature sig = jp.getSignature();
 		System.out.println("-----> メソッド名を取得するよ：" + sig.getName());
-		Object[] o = jp.getArgs();
-		System.out.println("-----> 仮引数の値を取得するよ：" + o[0]);
+//		Object[] o = jp.getArgs();
+//		System.out.println("-----> 仮引数の値を取得するよ：" + o[0]);
 	}
 //
 //	@After("execution(* findProduct(String))")
@@ -43,7 +46,7 @@ public class ParamAspect {
 
 
 //	@Around("execution(* message(..))")
-	@Around("execution(public * sample.customer.biz.service.SomeService.message())")
+	@Around("execution(public String sample.customer.biz.service.SomeService.message(..))")
 //	@Around("execution(* sample.customer.biz.service.ParamImplService.globalMessage(..))")
 	public Object around(ProceedingJoinPoint pjp) throws Throwable {
 		// メソッド呼出の前後にWeavingするAdvice

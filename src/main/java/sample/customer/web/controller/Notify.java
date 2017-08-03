@@ -11,7 +11,7 @@ public class Notify {
 
 	public String getMessage() {
 
-		String ret = someService.message();
+		String ret = someService.getMessage("");
 
 		return ret;
 	}
