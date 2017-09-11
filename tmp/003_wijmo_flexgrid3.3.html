@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html ng-app="MyApp"> <!-- モジュールを指定 -->
+<head>
+<meta charset="UTF-8">
+<title>Wijmo 5 FlexGridサンプル3</title>
+
+    <!-- Wijmo -->
+    <script src="http://cdn.wijmo.com/5.20161.154/controls/wijmo.min.js" type="text/javascript"></script>
+    <link href="http://cdn.wijmo.com/5.20161.154/styles/wijmo.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Wijmoコントロール -->
+    <script src="http://cdn.wijmo.com/5.20161.154/controls/wijmo.grid.min.js" type="text/javascript"></script>
+    <script src="http://cdn.wijmo.com/5.20161.154/controls/wijmo.input.min.js" type="text/javascript"></script>
+
+    <!-- Wijmoテーマ -->
+    <link href="http://cdn.wijmo.com/5.20161.154/styles/themes/wijmo.theme.modern.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Wijmoカルチャ -->
+    <script src="http://cdn.wijmo.com/5.20161.154/controls/cultures/wijmo.culture.ja.min.js " type="text/javascript"></script>
+
+    <!-- AngularJSとWijmoのAngularディレクティブ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js" type="text/javascript"></script>
+    <script src="http://cdn.wijmo.com/5.20161.154/interop/angular/wijmo.angular.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    // Wijmoモジュール"wj"を指定して新規モジュールを作成
+    var myApp = angular.module("MyApp", ["wj"]);
+
+
+  myApp.directive('myMenu', ['$compile', function($compile) {
+    return {
+      restrict: 'E',
+      scope: {
+        ram: '@',
+        item: '='
+      },
+      template:   '<div>'
+                + '</div>',
+      replace: true,
+      compile: function(element, attrs) {
+
+        return function(scope, element, attrs) {
+
+        var template = "";
+        if (scope.item.ram.type == "text"){
+            template = "<input type='text' name='namae' size='40' ng-blur='onBlur()'  maxlength='20' ng-model='item.ram.val'>";
+        }
+
+          var link =  $compile(template);
+          link(scope, function(cloned){
+
+console.log("scope", scope);
+
+            // element.find('div').append(cloned);
+            element.append(cloned);
+            
+          });
+
+          scope.onBlur = function() {
+console.log("onBlur");
+// scope.item.ram.val = "bbb";
+          }
+        };
+      }
+    };
+  }]);
+
+
+    // モジュールにコントローラーを定義
+    myApp.controller("MyController", ["$scope", function($scope) {
+        // スコープに変数を設定
+        $scope.gridData = [
+            {
+                "name":"iPhone 6",
+                "vendor": "Apple",
+                "ram": {val:111, type:"text"},
+                "platform":"iOS",
+                "version":"8.2"
+            },
+            {
+                "name":"iPhone 6 Plus",
+                "vendor": "Apple",
+                "ram": {val:"1GB", type:"sel"},
+                "platform":"iOS",
+                "version":"8.2"
+            },
+            {
+                "name":"iPhone 5s",
+                "vendor": "Apple",
+                "ram": {val:"1GB", type:"text"},
+                "platform":"iOS",
+                "version":"7.1.4"
+            },
+            {
+                "name":"Nexus 6",
+                "vendor": "Google",
+                "ram": {val:"1GB", type:"text"},
+                "platform":"Android",
+                "version":"5.1"
+            },
+            {
+                "name":"Nexus 9",
+                "vendor": "Google",
+                "ram": {val:"1GB", type:"text"},
+                "platform":"Android",
+                "version":"5.1"
+            },
+            {
+                "name":"Nexus 5",
+                "vendor": "Google",
+                "ram": {val:"1GB", type:"text"},
+                "platform":"Android",
+                "version":"4.4.4"
+            },
+            {
+                "name":"Zenfone 5",
+                "vendor": "ASUS",
+                "ram": {val:"1GB", type:"text"},
+                "platform":"Android",
+                "version":"4.4.2"
+            },
+            {
+                "name":"Zenfone 2",
+                "vendor": "ASUS",
+                "ram": {val:"1GB", type:"text"},
+                "platform":"Android",
+                "version":"5.x"
+            }
+        ];
+    }]);
+</script>
+</head>
+
+<!-- bodyタグ内でMyControllerを参照 -->
+<body ng-controller="MyController">
+<h1>Wijmo 5 FlexGridサンプル3</h1>
+
+<!-- FlexGrid表示 -->
+<h3>FlexGrid</h3>
+<wj-flex-grid items-source="gridData" style="width:600px">
+    <wj-flex-grid-column width="32" is-read-only="true"><!-- 属性指定    ...（1）-->
+        <img ng-src="img/{{$item.platform}}.png" />     <!-- 画像を参照  ...（2）-->
+    </wj-flex-grid-column>
+    <wj-flex-grid-column header="製品名" binding="name"></wj-flex-grid-column>
+    <wj-flex-grid-column header="メーカー" binding="vendor"></wj-flex-grid-column>
+    <!--<wj-flex-grid-column header="メモリ" binding="ram"></wj-flex-grid-column>-->
+
+    <wj-flex-grid-column header="メモリ" binding="ram">
+        <wj-flex-grid-cell-template cell-type="Cell">
+            {{$item.ram.val}}
+        </wj-flex-grid-cell-template>
+
+        <wj-flex-grid-cell-template cell-type="CellEdit">
+            <my-menu ram="{{$item.ram}}" item="$item" ></my-menu>
+            <!--<my-menu ram="aaa"></my-menu>-->
+        </wj-flex-grid-cell-template>
+
+
+    </wj-flex-grid-column>
+
+
+
+
+
+    <wj-flex-grid-column header="OSバージョン">
+        {{$item.platform}} {{$item.version}}            <!-- データ結合  ...（3） -->
+    </wj-flex-grid-column>
+</wj-flex-grid>
+
+</body>
+</html>
