@@ -46,3 +46,34 @@ http://www.hyuki.com/dp/
 
 
 http://demos.wijmo.com/5/angular/celltemplateintro/celltemplateintro/
+
+
+https://github.com/spring-projects/spring-framework/tree/1cc5afe24b592a50ab68c090e438138ab180374a/spring-websocket/src/test/java/org/springframework/web/socket/sockjs
+http://www.baeldung.com/mdc-in-log4j-2-logback
+https://stackoverflow.com/questions/30653028/multithread-using-executor-and-websocket
+
+https://github.com/bijukunjummen/spring-websocket-chat-sample/search?utf8=%E2%9C%93&q=WSConstants&type=
+https://logback.qos.ch/manual/mdc_ja.html
+https://www.programcreek.com/java-api-examples/index.php?api=org.springframework.messaging.support.ChannelInterceptorAdapter
+https://softwareengineering.stackexchange.com/questions/358918/does-web-socket-block-thread-while-keeping-connection-as-regular-http-connection
+https://github.com/spring-projects/spring-framework/tree/master/spring-websocket/src/test/java/org/springframework/web/socket/handler
+https://github.com/bijukunjummen/spring-websocket-chat-sample/blob/master/src/main/java/bk/chat/web/interceptors/SessionKeepAliveChannelInterceptor.java
+https://www.bbsmax.com/A/ke5jmpQjJr/
+http://blog.csdn.net/fly_leopard/article/details/53148935
+http://blog.csdn.net/u010648555/article/details/77141170
+https://spring.io/blog/2014/09/16/preview-spring-security-websocket-support-sessions
+http://www.jcombat.com/spring/exception-handling-in-spring-restful-web-service
+https://qiita.com/namutaka/items/c35c437b7246c5e4d729
+
+https://logging.apache.org/log4j/2.0/manual/api.html
+http://www.takaiwa.net/2012/01/spring-frameworklog4jaop_1592.html
+https://www.javadrive.jp/servlet/filter/index4.html
+https://qiita.com/ko-aoki/items/f0dcf8eac91f8e9997c6
+https://yalingunayer.com/blog/realtime-data-delivery-on-spring-boot-using-activemq-and-stomp-over-websockets-part-2/
+
+http://teqspaces.com/Tomcat/1
+https://stackoverflow.com/questions/31669927/spring-websockets-stomp-get-client-ip-address
+https://qiita.com/garbagetown/items/1ba8dee14c244be9975e
+
+http://momongahoi.hatenablog.com/entry/2015/05/30/155716
+

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -33,9 +35,14 @@ public class CustomerListController {
     @Autowired
     private ThreadPoolTaskExecutor taskExecutor;
 
+	private static Logger logger = LoggerFactory.getLogger(CustomerListController.class);
 
     @RequestMapping(value = "/", method = GET)
     public String home(HttpSession session, HttpServletRequest request) {
+
+    	logger.info("greeting");
+//    	if (true)
+//    	throw new RuntimeException();
 
     	session.setAttribute("test", "test1");
     	return "forward:/customer";

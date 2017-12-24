@@ -35,7 +35,23 @@ public class HandshakeInterceptor extends HttpSessionHandshakeInterceptor{
 //					attributes.put(name, session.getAttribute(name));
 //				}
 			}
+
+
+			if (session != null) {
+				attributes.put("HTTPSESSIONID", session.getId());
+			}
+
 		}
+
+		if (request instanceof ServletServerHttpRequest) {
+	        ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
+	        String ipAddress = servletRequest.getServletRequest().getHeader("X-FORWARDED-FOR");
+	        if (ipAddress == null) {
+	            ipAddress = servletRequest.getServletRequest().getRemoteAddr();
+	        }
+	        attributes.put("client", ipAddress);
+	    }
+//	    return true;
         return super.beforeHandshake(request, response, wsHandler, attributes);
     }
 

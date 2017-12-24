@@ -18,7 +18,9 @@ public class ParamAspect {
 //	@Before("execution(public * *(..))")
 //	@Before("execution(public * *(..))")
 //	@Before("execution(*  getTestMember3(..))")
-	@Before("execution(*  getMessage(..))")
+//	@Before("execution(*  findAll(..))")
+	@Around("execution(*  findAll(..))")
+//	 @Before("execution(* sample.customer.biz.service.MockCustomerService(..))")
 	public void before(JoinPoint jp) {
 		// メソッド開始時にWeavingするAdvice
 		System.out.println("Hello Before! *** メソッドが呼ばれる前に出てくるよ!");

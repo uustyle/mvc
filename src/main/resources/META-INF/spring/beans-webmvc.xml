@@ -17,16 +17,20 @@
 	     http://www.springframework.org/schema/aop
 	     http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+<context:annotation-config />
+<!--
+  <context:component-scan base-package="sample.customer.web.controller"/>
+ -->
   <context:component-scan base-package="sample.customer.web.controller"/>
 
 
-  <mvc:annotation-driven
-    validator="globalValidator" enable-matrix-variables="true"/>
 
-	<context:annotation-config/>
-<aop:aspectj-autoproxy />
+    <aop:aspectj-autoproxy />
+
+
+<!--
 <bean id="paramAspect" class="sample.customer.biz.service.aop.ParamAspect" />
-
+ -->
 
   <!-- Static Resourceの設定 -->
   <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />

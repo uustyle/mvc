@@ -3,10 +3,14 @@ package sample.customer.web.controller;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
@@ -15,9 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import sample.customer.biz.domain.Greeting;
 import sample.customer.biz.domain.HelloMessage;
-
 @Controller
 public class MessageController {
+
+	private static Logger logger = LoggerFactory.getLogger(MessageController.class);
 
 	@Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
@@ -25,7 +30,18 @@ public class MessageController {
     @MessageMapping("/hello1")
     @SendTo("/topic/greetings")
     @ResponseBody
-    public Greeting greeting(HelloMessage message) throws Exception {
+    public Greeting greeting(SimpMessageHeaderAccessor ha, HelloMessage message, MessageHeaders messageHeaders) throws Exception {
+    	System.out.println(ha.getSessionAttributes().get("CLIENT"));
+    	System.out.println(ha.getSessionAttributes().get("HTTPSESSIONID"));
+
+    	logger.info("start-------------");
+		logger.info("greeting");
+		logger.info("end-------------");
+
+    	logger.info(messageHeaders.toString());
+
+    	logger.info("end-------------");
+
     	//現在日時取得
         Calendar c = Calendar.getInstance();
 

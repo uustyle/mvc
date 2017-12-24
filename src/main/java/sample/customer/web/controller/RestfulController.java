@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -27,6 +28,10 @@ public class RestfulController {
     @RequestMapping(value = "/api/text/", method = GET)
     @ResponseBody
     public String getTestMember() {
+
+    	RequestContextHolder.getRequestAttributes().setAttribute("key", "test", RequestAttributes.SCOPE_SESSION);
+
+    	Object aaa = RequestContextHolder.getRequestAttributes().getAttribute("key", RequestAttributes.SCOPE_SESSION);
 
     	try{
         	Thread.sleep(5000);

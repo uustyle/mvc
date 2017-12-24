@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+
+	<Properties>
+<!--
+  		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n %X{client}</Property>
+		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n</Property>
+
+-->
+  		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n %X{client}</Property>
+		<Property name="business">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n</Property>
+		<Property name="dir">/Users/arakawa/Documents/workspace12/mvc</Property>
+	</Properties>
+
+	<Appenders>
+		<File name="MyFile" fileName="logs/app.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+		</File>
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${standard}" />
+		</Console>
+
+		<RollingFile name="app" fileName="${dir}/app.log"
+			filePattern="app\_%d{yyyy-MM-dd}.%i.log.gz">
+			<PatternLayout pattern="${business}" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+
+		<Async name="AsyncConsole">
+			<AppenderRef ref="console" />
+		</Async>
+
+		<Async name="AsyncApp">
+			<AppenderRef ref="app" />
+		</Async>
+	</Appenders>
+
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="AsyncConsole" />
+		</Root>
+
+        <Logger name="org.springframework.web" level="debug" >
+            <AppenderRef ref="AsyncApp" />
+        </Logger>
+
+
+        <Logger name="sample" level="info" additivity="false">
+            <AppenderRef ref="AsyncConsole" />
+        </Logger>
+
+	</Loggers>
+</Configuration>

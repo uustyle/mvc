@@ -17,15 +17,19 @@
 <script src="<c:url value="/resources/js/Concurrent.Thread-full-20090713.js" />"></script>
 
 <script>
+
+
+
 $(function() {
-	var socket = new SockJS("/mvc/endPoint.do");
+/* 	var socket = new SockJS("/mvc/endPoint.do");
 // 	 var socket = new WebSocket('ws://' + location.host + '/mvc/endPoint.do');
 	 var stompClient = Stomp.over(socket);
-
-/* 	var socket;
-	var stompClient;
  */
-	 // callback function to be called when stomp client is connected to server (see Note 2)
+
+ var socket;
+ var stompClient;
+
+	// callback function to be called when stomp client is connected to server (see Note 2)
 	 var connectCallback = function() {
 	      alert("connected!");
 	      stompClient.subscribe('/topic/greetings', function(greeting){
@@ -53,22 +57,32 @@ $(function() {
 	      console.log(error.headers);
 	 };
 
+/*      var countup = function(){
+	       stompClient.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+  	  }
+ */
 	$('#connect').on('click',function(){
 
-		this.socket = new SockJS("/mvc/endPoint.do");
+		socket = new SockJS("/mvc/endPoint.do");
 //	 	 var socket = new WebSocket('ws://' + location.host + '/mvc/endPoint.do');
-		 this.stompClient = Stomp.over(this.socket);
+		 stompClient = Stomp.over(socket);
 
 //    	stompClient.connect("guest", "guest", connectCallback, errorCallback);
-		this.stompClient.connect("guest", "guest", connectCallback, errorCallback);
-	     console.log("connectCallback",connectCallback,this.stompClient);
+		stompClient.connect("guest", "guest", connectCallback, errorCallback);
+	     console.log("connectCallback",connectCallback,stompClient);
 
 	});
 
 	$('#send').on('click',function(){
-//	     alert("test");
+	     alert("test");
 
-	       stompClient.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+
+ 	       var countup = function(){
+		       stompClient.send("/app/hello1", {}, JSON.stringify({ 'name': 'Joe' }));
+		       setTimeout(countup, 1000);
+
+ 	       }
+ setTimeout(countup, 1000);
 
 	});
 
