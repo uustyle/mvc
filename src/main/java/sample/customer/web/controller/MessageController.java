@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
@@ -35,6 +36,7 @@ public class MessageController {
     	System.out.println(ha.getSessionAttributes().get("HTTPSESSIONID"));
 
     	logger.info("start-------------");
+        MDC.put("client", "1.1.1.1");
 		logger.info("greeting");
 		logger.info("end-------------");
 

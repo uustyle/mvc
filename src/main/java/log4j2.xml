@@ -7,7 +7,7 @@
 		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n</Property>
 
 -->
-  		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n %X{client}</Property>
+  		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n %t %X{client}</Property>
 		<Property name="business">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n</Property>
 		<Property name="dir">/Users/arakawa/Documents/workspace12/mvc</Property>
 	</Properties>
@@ -34,6 +34,19 @@
 			<DefaultRolloverStrategy max="10" />
 		</RollingFile>
 
+
+		<RollingFile name="hoge" fileName="${dir}/hoge.log" filePattern="${dir}/hoge-%d{yyyy-MM-dd-HH-mm-ss}.log">
+	        <PatternLayout pattern="[%d{yyyy.MM.dd HH:mm:ss.SSS}] %p &lt;%c{1}&gt; %m%n" />
+	        <TimeBasedTriggeringPolicy />
+	        <DefaultRolloverStrategy>
+	            <Delete basePath="${dir}/" maxDepth="1">
+	                <IfFileName glob="hoge-*.log" />
+	                <IfLastModified age="3m" />
+	            </Delete>
+	        </DefaultRolloverStrategy>
+	    </RollingFile>
+
+
 		<Async name="AsyncConsole">
 			<AppenderRef ref="console" />
 		</Async>
@@ -41,6 +54,12 @@
 		<Async name="AsyncApp">
 			<AppenderRef ref="app" />
 		</Async>
+
+		<Async name="AsyncHoge">
+			<AppenderRef ref="hoge" />
+		</Async>
+
+
 	</Appenders>
 
 	<Loggers>
@@ -52,10 +71,16 @@
             <AppenderRef ref="AsyncApp" />
         </Logger>
 
-
+<!--
         <Logger name="sample" level="info" additivity="false">
             <AppenderRef ref="AsyncConsole" />
         </Logger>
+ -->
+
+        <Logger name="sample" level="info" additivity="false">
+            <AppenderRef ref="AsyncHoge" />
+        </Logger>
+
 
 	</Loggers>
 </Configuration>
