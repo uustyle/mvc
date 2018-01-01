@@ -1,0 +1,1 @@
+[2017.12.30 12:31:41.307] INFO <RequestInterceptor> [SUCCESS CONTROLLER afterCompletion] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers

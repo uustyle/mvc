@@ -1,0 +1,7 @@
+[2017.12.30 09:16:25.243] INFO <RequestInterceptor> [SUCCESS CONTROLLER preHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+[2017.12.30 09:16:25.244] INFO <CustomerListController> greeting
+[2017.12.30 09:16:25.244] INFO <RequestInterceptor> [SUCCESS CONTROLLER postHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+[2017.12.30 09:16:25.246] INFO <RequestInterceptor> [SUCCESS CONTROLLER preHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+[2017.12.30 09:16:25.247] INFO <RequestInterceptor> [SUCCESS CONTROLLER postHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+[2017.12.30 09:16:25.260] INFO <RequestInterceptor> [SUCCESS CONTROLLER afterCompletion] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+[2017.12.30 09:16:25.261] INFO <RequestInterceptor> [SUCCESS CONTROLLER afterCompletion] /mvc/ sample.customer.web.controller.CustomerListController.home

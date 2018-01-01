@@ -26,7 +26,7 @@ public class CustomerRestController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(method = POST)
+    @RequestMapping(value = "/{customerId}",method = POST)
     @ResponseStatus(HttpStatus.OK)
     public String register(@RequestBody Customer customer) {
         customerService.register(customer);

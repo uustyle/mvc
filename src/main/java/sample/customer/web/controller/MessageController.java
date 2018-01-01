@@ -55,6 +55,11 @@ public class MessageController {
 
     @SubscribeMapping("/hello2")
     public void sendMessage(String message) {
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        System.out.println("hello2:" + sdf.format(c.getTime()));
+
         simpMessagingTemplate.convertAndSend("/topic/greetings2/", message);
     }
 

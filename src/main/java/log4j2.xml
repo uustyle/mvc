@@ -41,7 +41,7 @@
 	        <DefaultRolloverStrategy>
 	            <Delete basePath="${dir}/" maxDepth="1">
 	                <IfFileName glob="hoge-*.log" />
-	                <IfLastModified age="3m" />
+	                <IfLastModified age="PT3M" />
 	            </Delete>
 	        </DefaultRolloverStrategy>
 	    </RollingFile>
@@ -78,7 +78,7 @@
  -->
 
         <Logger name="sample" level="info" additivity="false">
-            <AppenderRef ref="AsyncHoge" />
+            <AppenderRef ref="AsyncConsole" />
         </Logger>
 
 

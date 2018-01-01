@@ -77,10 +77,17 @@
 			</websocket:interceptors>
 		</websocket:client-inbound-channel>
 
+		<websocket:client-outbound-channel>
+			<websocket:executor core-pool-size="101" max-pool-size="201" keep-alive-seconds="601"/>
+			<websocket:interceptors>
+				<ref bean="my2Interceptor"/>
+			</websocket:interceptors>
+		</websocket:client-outbound-channel>
+
     </websocket:message-broker>
 
 	<bean id="myInterceptor" class="sample.customer.biz.interceptor.SessionKeepAliveChannelInterceptor"/>
-
+	<bean id="my2Interceptor" class="sample.customer.biz.interceptor.SessionKeepAlive2ChannelInterceptor"/>
 
 <mvc:interceptors>
     <mvc:interceptor>

@@ -1,0 +1,1 @@
+[2017.12.30 11:20:44.705] INFO <RequestInterceptor> [SUCCESS CONTROLLER preHandle] /mvc/api/customer/1 sample.customer.web.controller.CustomerRestController.register

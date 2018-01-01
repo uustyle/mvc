@@ -42,7 +42,7 @@ public class MockCustomerService implements CustomerService {
     }
 
     public Customer register(Customer customer) {
-        customer.setId(nextId++);
+//        customer.setId(nextId++);
         customerMap.put(customer.getId(), newCustomer(customer));
 
         return customer;
@@ -66,9 +66,9 @@ public class MockCustomerService implements CustomerService {
     public void initCustomer() {
         nextId = 1;
 
-        register(new Customer("太郎", "taro@aa.bb.cc", date("19750111"), 1));
-        register(new Customer("次郎", "jiro@aa.bb.cc", date("19760212"), 2));
-        register(new Customer("三郎", "sabu@aa.bb.cc", date("19770313"), 3));
+//        register(new Customer("太郎", "taro@aa.bb.cc", date("19750111"), 1));
+//        register(new Customer("次郎", "jiro@aa.bb.cc", date("19760212"), 2));
+//        register(new Customer("三郎", "sabu@aa.bb.cc", date("19770313"), 3));
     }
 
     private static Date date(String dateString) {
