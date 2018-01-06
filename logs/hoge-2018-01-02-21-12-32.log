@@ -1,0 +1,2 @@
+[2018.01.02 21:12:32.907] INFO <RequestInterceptor> [SUCCESS CONTROLLER preHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+[2018.01.02 21:12:32.964] INFO <LogAdvice> before Args:[org.apache.catalina.session.StandardSessionFacade@3b321f45, filter.RereadableRequestWrapper@35b54338]

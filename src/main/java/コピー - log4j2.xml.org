@@ -10,8 +10,6 @@
   		<Property name="standard">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n %t %X{client}</Property>
 		<Property name="business">[%d{yyyy/MM/dd HH:mm:ss.SSS}] %m%n</Property>
 		<Property name="dir">/Users/arakawa/Documents/workspace12/mvc</Property>
-    <Property name="baseDir">/Users/arakawa/Documents/workspace12/mvc/logs</Property>
-
 	</Properties>
 
 	<Appenders>
@@ -36,35 +34,7 @@
 			<DefaultRolloverStrategy max="10" />
 		</RollingFile>
 
-<!--
-		<RollingFile name="hoge" fileName="/Users/arakawa/Documents/workspace12/mvc/logs/hoge.log" filePattern="/Users/arakawa/Documents/workspace12/mvc/logs/hoge-%d{yyyy-MM-dd-HH-mm-ss}.log">
-	        <PatternLayout pattern="[%d{yyyy.MM.dd HH:mm:ss.SSS}] %p &lt;%c{1}&gt; %m%n" />
-	        <TimeBasedTriggeringPolicy />
-	        <DefaultRolloverStrategy>
-	            <Delete basePath="/Users/arakawa/Documents/workspace12/mvc/logs" maxDepth="2">
-	                <IfFileName glob="hoge-*.log" />
-	                <IfLastModified age="1s" />
-	            </Delete>
-	        </DefaultRolloverStrategy>
-	    </RollingFile>
- -->
 
-    <RollingFile name="hoge" fileName="${baseDir}/app.log"
-          filePattern="${baseDir}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}.log.gz">
-      <PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
-<!--        <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
--->
-	        <TimeBasedTriggeringPolicy />
-
-      <DefaultRolloverStrategy>
-        <Delete basePath="${baseDir}" maxDepth="2">
-          <IfFileName glob="*/app-*.log.gz" />
-          <IfLastModified age="1H" />
-        </Delete>
-      </DefaultRolloverStrategy>
-    </RollingFile>
-
-<!--
 		<RollingFile name="hoge" fileName="${dir}/hoge.log" filePattern="${dir}/hoge-%d{yyyy-MM-dd-HH-mm-ss}.log">
 	        <PatternLayout pattern="[%d{yyyy.MM.dd HH:mm:ss.SSS}] %p &lt;%c{1}&gt; %m%n" />
 	        <TimeBasedTriggeringPolicy />
@@ -75,7 +45,7 @@
 	            </Delete>
 	        </DefaultRolloverStrategy>
 	    </RollingFile>
- -->
+
 
 		<Async name="AsyncConsole">
 			<AppenderRef ref="console" />

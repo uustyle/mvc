@@ -30,8 +30,15 @@ $(function() {
  var stompClient;
 
 	// callback function to be called when stomp client is connected to server (see Note 2)
-	 var connectCallback = function() {
-	      alert("connected!");
+	 var connectCallback = function(frame) {
+
+		 whoami = frame.headers['user-name'];
+		 console.log('whoami: ' + whoami);
+
+		 console.log('Connected: ' + frame);
+
+		alert("connected!");
+
 	      stompClient.subscribe('/topic/greetings', function(greeting){
 	    	  console.log("ok1");
 	    	  console.log(JSON.parse(greeting.body).content);
@@ -47,6 +54,10 @@ $(function() {
            stompClient.subscribe('/user/queue/errors', function (error) { // エラー通知用のQueue(/user/queue/errors)を購読
                alert(JSON.parse(error.body).message);
            });
+
+           stompClient.subscribe('/user/queue/join/' + "1", function(message) {
+        	   console.log(JSON.parse(message.body));
+        	    });
 
 	 };
 
@@ -99,6 +110,15 @@ $(function() {
 	       stompClient.send("/app/hello3", {}, "error");
 
 	});
+
+	$('#sendqueue').on('click',function(){
+//	     alert("test");
+	       stompClient.send('/app/join/' + "1",{},JSON.stringify({ 'name': 'Joe' }));
+
+	});
+
+
+
 
 	$('#sendcopy').on('click',function(){
 
@@ -303,6 +323,8 @@ console.log("wait start", new Date());
 <input type="button" id="send" value="send">
 <input type="button" id="send2" value="send2">
 <input type="button" id="send3" value="send3">
+<input type="button" id="sendqueue" value="sendqueue">
+
 <input type="button" id="sendcopy" value="sendcopy">
 <input type="button" id="sendcopy2" value="sendcopy2">
 <input type="button" id="disconnect1" value="disconnect1">

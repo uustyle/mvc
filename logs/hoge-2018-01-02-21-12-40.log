@@ -1,0 +1,9 @@
+[2018.01.02 21:12:40.424] INFO <CustomerListController> greeting
+[2018.01.02 21:12:40.424] INFO <LogAdvice> after
+[2018.01.02 21:12:40.438] INFO <RequestInterceptor> [SUCCESS CONTROLLER postHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+[2018.01.02 21:12:40.450] INFO <RequestInterceptor> [SUCCESS CONTROLLER preHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+[2018.01.02 21:12:40.452] INFO <LogAdvice> before Args:{}
+[2018.01.02 21:12:40.468] INFO <LogAdvice> after
+[2018.01.02 21:12:40.468] INFO <RequestInterceptor> [SUCCESS CONTROLLER postHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+[2018.01.02 21:12:40.660] INFO <RequestInterceptor> [SUCCESS CONTROLLER afterCompletion] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+[2018.01.02 21:12:40.664] INFO <RequestInterceptor> [SUCCESS CONTROLLER afterCompletion] /mvc/ sample.customer.web.controller.CustomerListController.home

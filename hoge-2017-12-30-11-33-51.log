@@ -1,2 +1,0 @@
-[2017.12.30 11:33:51.126] INFO <RequestInterceptor> [SUCCESS CONTROLLER postHandle] /mvc/api/customer/1 sample.customer.web.controller.CustomerRestController.register
-[2017.12.30 11:33:51.126] INFO <RequestInterceptor> [SUCCESS CONTROLLER afterCompletion] /mvc/api/customer/1 sample.customer.web.controller.CustomerRestController.register

@@ -1,2 +1,0 @@
-[2017.12.30 12:24:58.676] INFO <LogAdvice> after
-[2017.12.30 12:24:58.676] INFO <RequestInterceptor> [SUCCESS CONTROLLER postHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
