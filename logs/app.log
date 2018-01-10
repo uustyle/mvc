@@ -1,12 +1,8 @@
-2018-01-03 21:17:31,800 INFO s.c.w.c.h.RequestInterceptor [http-nio-8080-exec-2] [SUCCESS CONTROLLER preHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
-2018-01-03 21:17:31,873 INFO s.c.b.s.a.LogAdvice [http-nio-8080-exec-2] before Args:org.apache.catalina.session.StandardSessionFacade@479d8f7
-2018-01-03 21:17:37,216 INFO s.c.w.c.CustomerListController [http-nio-8080-exec-2] greeting
-2018-01-03 21:17:38,483 INFO s.c.w.c.CustomerListController [http-nio-8080-exec-2] greeting
-2018-01-03 21:17:38,483 INFO s.c.b.s.a.LogAdvice [http-nio-8080-exec-2] after
-2018-01-03 21:17:38,516 INFO s.c.w.c.h.RequestInterceptor [http-nio-8080-exec-2] [SUCCESS CONTROLLER postHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
-2018-01-03 21:17:38,527 INFO s.c.w.c.h.RequestInterceptor [http-nio-8080-exec-2] [SUCCESS CONTROLLER preHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
-2018-01-03 21:17:38,532 INFO s.c.b.s.a.LogAdvice [http-nio-8080-exec-2] before Args:{}
-2018-01-03 21:17:38,544 INFO s.c.b.s.a.LogAdvice [http-nio-8080-exec-2] after
-2018-01-03 21:17:38,545 INFO s.c.w.c.h.RequestInterceptor [http-nio-8080-exec-2] [SUCCESS CONTROLLER postHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
-2018-01-03 21:17:38,864 INFO s.c.w.c.h.RequestInterceptor [http-nio-8080-exec-2] [SUCCESS CONTROLLER afterCompletion] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
-2018-01-03 21:17:38,868 INFO s.c.w.c.h.RequestInterceptor [http-nio-8080-exec-2] [SUCCESS CONTROLLER afterCompletion] /mvc/ sample.customer.web.controller.CustomerListController.home
+10 1 2018 22:02:38: [SUCCESS CONTROLLER preHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+10 1 2018 22:02:38: before Args:org.apache.catalina.session.StandardSessionFacade@1df225d2
+10 1 2018 22:02:44: greeting
+10 1 2018 22:02:46,004: greeting
+10 1 2018: greeting
+10 1 2018 22:04:29: greeting def
+10 1 2018 22:04:30,191: greeting MARKER1
+10 1 2018: greeting MARKER2

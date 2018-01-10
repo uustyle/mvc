@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -37,10 +39,19 @@ public class CustomerListController {
 
 	private static Logger logger = LoggerFactory.getLogger(CustomerListController.class);
 
+	private static final Marker MARKER1 = MarkerFactory.getMarker("ExceptionInterceptor1");
+
+	private static final Marker MARKER2 = MarkerFactory.getMarker("ExceptionInterceptor2");
+
     @RequestMapping(value = "/", method = GET)
     public String home(HttpSession session, HttpServletRequest request) {
 
-    	logger.info("greeting");
+    	logger.info("greeting def");
+
+    	logger.info(MARKER1, "greeting MARKER1");
+
+    	logger.info(MARKER2, "greeting MARKER2");
+
 //    	if (true)
 //    	throw new RuntimeException();
 

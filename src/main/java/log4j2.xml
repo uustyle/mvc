@@ -49,11 +49,12 @@
 	    </RollingFile>
  -->
 
+
+<!--
+ok
     <RollingFile name="hoge" fileName="${baseDir}/app.log"
           filePattern="${baseDir}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}.log.gz">
       <PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
-<!--        <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
--->
 	        <TimeBasedTriggeringPolicy />
 
       <DefaultRolloverStrategy>
@@ -63,6 +64,32 @@
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
+-->
+
+
+	<RollingFile name="hoge" fileName="${baseDir}/app.log"
+		filePattern="${baseDir}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}.log.gz">
+
+		<PatternLayout>
+			<MarkerPatternSelector defaultPattern="%d{dd MMM yyyy HH:mm:ss}: %m%n">
+				<PatternMatch key="ExceptionInterceptor1"
+					pattern="%d{dd MMM yyyy HH:mm:ss,SSS}: %m%throwable{5}%n" />
+				<PatternMatch key="ExceptionInterceptor2"
+					pattern="%d{dd MMM yyyy}: %m%throwable{5}%n" />
+			</MarkerPatternSelector>
+		</PatternLayout>
+
+		<TimeBasedTriggeringPolicy />
+
+		<DefaultRolloverStrategy>
+			<Delete basePath="${baseDir}" maxDepth="2">
+				<IfFileName glob="*/app-*.log.gz" />
+				<IfLastModified age="1H" />
+			</Delete>
+		</DefaultRolloverStrategy>
+	</RollingFile>
+
+
 
 <!--
 		<RollingFile name="hoge" fileName="${dir}/hoge.log" filePattern="${dir}/hoge-%d{yyyy-MM-dd-HH-mm-ss}.log">
