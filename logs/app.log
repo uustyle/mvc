@@ -1,31 +1,16 @@
-16 1 2018 23:09:12: [SUCCESS CONTROLLER preHandle] /mvc/uploadForm sample.customer.web.controller.CustomerListController.uploadForm
-16 1 2018 23:09:12: before Args:{}
-16 1 2018 23:09:14: after
-16 1 2018 23:09:14: [SUCCESS CONTROLLER postHandle] /mvc/uploadForm sample.customer.web.controller.CustomerListController.uploadForm
-16 1 2018 23:09:14: [SUCCESS CONTROLLER afterCompletion] /mvc/uploadForm sample.customer.web.controller.CustomerListController.uploadForm
-16 1 2018 23:09:53: [SUCCESS CONTROLLER preHandle] /mvc/uploadRecv sample.customer.web.controller.CustomerListController.uploadRecv
-16 1 2018 23:09:55: [SUCCESS CONTROLLER afterCompletion] /mvc/uploadRecv sample.customer.web.controller.CustomerListController.uploadRecv
-16 1 2018 23:12:29: [SUCCESS CONTROLLER preHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
-16 1 2018 23:12:29: before Args:org.apache.catalina.session.StandardSessionFacade@4b1bddd6
-16 1 2018 23:12:32: greeting def
-16 1 2018 23:12:32,438: greeting MARKER1
-16 1 2018: greeting MARKER2
-16 1 2018 23:12:33: greeting def
-16 1 2018 23:12:33,438: greeting MARKER1
-16 1 2018: greeting MARKER2
-16 1 2018 23:12:33: after
-16 1 2018 23:12:33: [SUCCESS CONTROLLER postHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
-16 1 2018 23:12:34: [SUCCESS CONTROLLER preHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
-16 1 2018 23:12:34: before Args:{}
-16 1 2018 23:12:34: after
-16 1 2018 23:12:34: [SUCCESS CONTROLLER postHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
-16 1 2018 23:12:34: [SUCCESS CONTROLLER afterCompletion] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
-16 1 2018 23:12:34: [SUCCESS CONTROLLER afterCompletion] /mvc/ sample.customer.web.controller.CustomerListController.home
-16 1 2018 23:12:53: [SUCCESS CONTROLLER preHandle] /mvc/uploadForm sample.customer.web.controller.CustomerListController.uploadForm
-16 1 2018 23:12:53: before Args:{}
-16 1 2018 23:12:56: after
-16 1 2018 23:12:56: [SUCCESS CONTROLLER postHandle] /mvc/uploadForm sample.customer.web.controller.CustomerListController.uploadForm
-16 1 2018 23:12:56: [SUCCESS CONTROLLER afterCompletion] /mvc/uploadForm sample.customer.web.controller.CustomerListController.uploadForm
-16 1 2018 23:13:27: [SUCCESS CONTROLLER preHandle] /mvc/uploadRecv sample.customer.web.controller.CustomerListController.uploadRecv
-16 1 2018 23:13:40: before Args:null
-16 1 2018 23:14:24: [SUCCESS CONTROLLER afterCompletion] /mvc/uploadRecv sample.customer.web.controller.CustomerListController.uploadRecv
+17 1 2018 00:24:43: [SUCCESS CONTROLLER preHandle] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:24:47: before Args:filter.GenericResponseWrapper@3563a762
+17 1 2018 00:25:07: [SUCCESS CONTROLLER afterCompletion] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:27:43: [SUCCESS CONTROLLER preHandle] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:27:44: before Args:filter.GenericResponseWrapper@6acb3616
+17 1 2018 00:28:08: [SUCCESS CONTROLLER afterCompletion] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:29:26: [SUCCESS CONTROLLER preHandle] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:29:26: before Args:filter.GenericResponseWrapper@2c98f36
+17 1 2018 00:29:48: after
+17 1 2018 00:29:48: [SUCCESS CONTROLLER postHandle] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:29:48: [SUCCESS CONTROLLER afterCompletion] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:31:26: [SUCCESS CONTROLLER preHandle] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:31:26: before Args:filter.GenericResponseWrapper@d6e5e29
+17 1 2018 00:31:34: after
+17 1 2018 00:31:34: [SUCCESS CONTROLLER postHandle] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip
+17 1 2018 00:31:47: [SUCCESS CONTROLLER afterCompletion] /mvc/zip sample.customer.web.controller.DownloadController.downloadZip

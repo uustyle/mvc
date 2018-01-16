@@ -19,12 +19,12 @@ import filter.GenericResponseWrapper;
 import filter.RereadableRequestWrapper;
 
 @Component
-public class RequestInterceptor implements HandlerInterceptor {
+public class CopyOfRequestInterceptor implements HandlerInterceptor {
 
 	@Autowired
 	private ISomeService someService;
 
-	private static final Logger logger = LoggerFactory.getLogger(RequestInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(CopyOfRequestInterceptor.class);
 
 
 	@Override
