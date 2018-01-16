@@ -40,8 +40,8 @@ public class RequestInterceptor implements HandlerInterceptor {
 				request.getRequestURI(),
 				m.getDeclaringClass().getName(), m.getName()});
 
-		BufferedReader body = new BufferedReader(((RereadableRequestWrapper)request).getReader());
-		String ret = body.readLine();
+//		BufferedReader body = new BufferedReader(((RereadableRequestWrapper)request).getReader());
+//		String ret = body.readLine();
 
 		}
 		//		HttpSession session = request.getSession(false);
