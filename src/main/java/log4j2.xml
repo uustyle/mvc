@@ -134,7 +134,7 @@ ok
         </Logger>
  -->
 
-        <Logger name="sample" level="info" additivity="false">
+        <Logger name="sample" level="debug" additivity="false">
             <AppenderRef ref="AsyncHoge" />
         </Logger>
 

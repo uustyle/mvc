@@ -1,5 +1,17 @@
-18 1 2018 23:53:23: [SUCCESS CONTROLLER preHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
-18 1 2018 23:53:26: before Args:{}
-18 1 2018 23:53:40: after
-18 1 2018 23:53:40: [SUCCESS CONTROLLER postHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
-18 1 2018 23:53:46: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:00:24: [SUCCESS CONTROLLER preHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:00:24: before Args:{}
+19 1 2018 00:00:28: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:00:37: after
+19 1 2018 00:00:37: [SUCCESS CONTROLLER postHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:00:38: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:04:09: [SUCCESS CONTROLLER preHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:04:09: before Args:{}
+19 1 2018 00:04:17: ==>  Preparing: select id, name from test where id = ? 
+19 1 2018 00:04:17: ==> Parameters: 1(Integer)
+19 1 2018 00:04:17: <==      Total: 1
+19 1 2018 00:04:20: ==>  Preparing: select id, name from test where id = ? 
+19 1 2018 00:04:20: ==> Parameters: 1(Integer)
+19 1 2018 00:04:20: <==      Total: 1
+19 1 2018 00:04:20: after
+19 1 2018 00:04:20: [SUCCESS CONTROLLER postHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
+19 1 2018 00:04:21: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
