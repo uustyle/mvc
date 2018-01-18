@@ -5,8 +5,6 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
 		    xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -17,12 +15,7 @@
         http://www.springframework.org/schema/websocket
 		http://www.springframework.org/schema/websocket/spring-websocket.xsd
 	     http://www.springframework.org/schema/aop
-	     http://www.springframework.org/schema/aop/spring-aop.xsd
-		http://www.springframework.org/schema/tx
-		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-        http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util-3.0.xsd"
-	     >
+	     http://www.springframework.org/schema/aop/spring-aop.xsd">
 
   <!--
   <context:component-scan base-package="sample.customer.biz.service"/>
@@ -33,7 +26,6 @@
 
   <context:component-scan base-package="sample.customer.web.controller"/>
   <context:component-scan base-package="sample.customer.biz.service"/>
-  <context:component-scan base-package="sample.customer.biz.mapper"/>
   <context:component-scan base-package="listener"/>
 
     <aop:aspectj-autoproxy />
@@ -109,26 +101,5 @@
 <bean id="multipartResolver"
  class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 </bean>
-
-    <!-- DataSource -->
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost/test" />
-        <property name="username" value="root" />
-        <property name="password" value="arak001" />
-    </bean>
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="sample.customer.biz.mapper" />
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-    </bean>
-    <bean id="transactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-
-
 
 </beans>
