@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
+import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import sample.customer.biz.domain.Customer;
+import sample.customer.biz.domain.Logging;
+import sample.customer.biz.dto.Student;
 import sample.customer.biz.service.CustomerService;
 import sample.customer.biz.service.DataNotFoundException;
 import sample.customer.biz.thread.PrintTask;
@@ -57,6 +60,22 @@ public class CustomerListController {
     	logger.info(MARKER1, "greeting MARKER1");
 
     	logger.info(MARKER2, "greeting MARKER2");
+
+
+        Student student = new Student();
+
+        //Create the Proxy Factory
+        AspectJProxyFactory proxyFactory = new AspectJProxyFactory(student);
+
+        //Add Aspect class to the factory
+        proxyFactory.addAspect(Logging.class);
+
+        //Get the proxy object
+        Student proxyStudent = proxyFactory.getProxy();
+
+        //Invoke the proxied method.
+        proxyStudent.getAge();
+
 
 //    	if (true)
 //    	throw new RuntimeException();

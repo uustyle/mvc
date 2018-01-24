@@ -1,17 +1,16 @@
-19 1 2018 00:00:24: [SUCCESS CONTROLLER preHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
-19 1 2018 00:00:24: before Args:{}
-19 1 2018 00:00:28: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
-19 1 2018 00:00:37: after
-19 1 2018 00:00:37: [SUCCESS CONTROLLER postHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
-19 1 2018 00:00:38: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
-19 1 2018 00:04:09: [SUCCESS CONTROLLER preHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
-19 1 2018 00:04:09: before Args:{}
-19 1 2018 00:04:17: ==>  Preparing: select id, name from test where id = ? 
-19 1 2018 00:04:17: ==> Parameters: 1(Integer)
-19 1 2018 00:04:17: <==      Total: 1
-19 1 2018 00:04:20: ==>  Preparing: select id, name from test where id = ? 
-19 1 2018 00:04:20: ==> Parameters: 1(Integer)
-19 1 2018 00:04:20: <==      Total: 1
-19 1 2018 00:04:20: after
-19 1 2018 00:04:20: [SUCCESS CONTROLLER postHandle] /mvc/test/1 sample.customer.web.controller.TestController.test
-19 1 2018 00:04:21: [SUCCESS CONTROLLER afterCompletion] /mvc/test/1 sample.customer.web.controller.TestController.test
+24 1 2018 22:00:29: [SUCCESS CONTROLLER preHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+24 1 2018 22:00:29: before Args:org.apache.catalina.session.StandardSessionFacade@3d63db2d
+24 1 2018 22:00:36: greeting def
+24 1 2018 22:00:37,582: greeting MARKER1
+24 1 2018: greeting MARKER2
+24 1 2018 22:01:14: greeting def
+24 1 2018 22:01:14,002: greeting MARKER1
+24 1 2018: greeting MARKER2
+24 1 2018 22:01:15: after
+24 1 2018 22:01:15: [SUCCESS CONTROLLER postHandle] /mvc/ sample.customer.web.controller.CustomerListController.home
+24 1 2018 22:01:15: [SUCCESS CONTROLLER preHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+24 1 2018 22:01:15: before Args:{}
+24 1 2018 22:01:15: after
+24 1 2018 22:01:15: [SUCCESS CONTROLLER postHandle] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+24 1 2018 22:01:17: [SUCCESS CONTROLLER afterCompletion] /mvc/customer sample.customer.web.controller.CustomerListController.showAllCustomers
+24 1 2018 22:01:21: [SUCCESS CONTROLLER afterCompletion] /mvc/ sample.customer.web.controller.CustomerListController.home
