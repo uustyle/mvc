@@ -1,0 +1,921 @@
+TortoiseGit
+①以下をダウンロードするしsetup
+msysgit [Git-1.8.4-preview20130916.exe]
+URL:https://code.google.com/p/tortoisegit/wiki/Download
+
+TortoiseGit [TortoiseGit-1.8.6.0-32bit.msi]
+URL:https://code.google.com/p/tortoisegit/wiki/Download?tm=2
+
+TortoiseGit 日本語言語パック [TortoiseGit-LanguagePack-1.8.6.0-32bit-ja.msi]
+URL:https://code.google.com/p/tortoisegit/wiki/Download?tm=2
+
+②msysgit の環境設定
+・スタート-GitBash
+・以下を実行
+git config --global user.email "コミット時に利用されるメールアドレス"
+git config --global user.name "コミット時に利用される名前"
+#日本語の文字化け対策で設定します。
+git config --global core.quotepath false
+改行コードを Git が自動変換することを無効にします。
+git config --global core.autocrlf false
+push コマンド時にブランチ名やタグ名を指定しない場合の標準動作を設定します。（安全のため）
+git config --global push.default upstream
+
+③リポジトリ用のディレクトリを作成（ベアリポジトリ）
+>mkdir C:\git
+ C:\git を右クリックして TotroiseGitメニューの「Git ここにリポジトリを作成(Y)」をクリックします。
+Bare を生成にcheckを入れて、OK
+
+④クローン作成
+クローン作成するフォルダで、
+右クリック-GitGUI-既存リポジトリを複製
+URL： C:\work\tgit-repo(クローンする元のリポジトリ)
+ディレクトリ：C:\work\tutorial-repo(自分が開発作業に利用するローカルのフォルダ)
+
+⑤ファイルを追加してコミット
+C:\work\tutorial-repo\aaa.txtを作成
+C:\work\tutorial-repoで右クリック-追加（インデックスに追加される）
+C:\work\tutorial-repoで右クリック-Gitコミット>master
+
+⑥ブランチ作成
+C:\work\tutorial-repo（クローンしたフォルダ）を選択し
+TortoiseGit-ブランチを作成
+ブランチ名：repo1-bra(適用なブランチ名)
+基点:HEAD(masterブランチ)
+
+⑦ブランチ切り替え
+TortoiseGit-切り替え
+切り替え先:切り替え先のブランチ
+
+⑧マージ
+マージ先に切り替える（ブランチをmasterに取り込む場合は、masterに）
+C:\work\tutorial-repo（クローンしたフォルダ）を選択しTortoiseGit-マージ
+from:マージするブランチを選択
+
+
+参考サイト
+
+
+VMWare Player CentOS6.5環境
+
+①以下のサイトより、ダウンロード
+http://ftp.iij.ad.jp/pub/linux/centos/6.5/isos/x86_64/
+ISOイメージファイルをダウンロード
+
+CentOS-6.5-x86_64-bin-DVD1.iso	29-Nov-2013 21:11 4.2G
+CentOS-6.5-x86_64-bin-DVD2.iso	29-Nov-2013 21:11 1.2G
+
+
+②VMWare Playerのインストール
+https://my.vmware.com/jp/web/vmware/downloads
+
+
+③以下を実行してインストール
+VMware-player-6.0.2-1744117.exe
+
+
+④CentOS 6.5をインストール
+1 新規仮想マシンの作成
+後でOSをインストールするを選択
+
+2 LInux 64ビットを選択
+
+3 単一ファイルを選択
+
+⑤上記④で選択した仮想マシンを選択し、仮想マシン設定の編集を選択
+1 ハードウエアタブのCD/DVD(IDE)でISOイメージファイルを使用するを選択
+①で落としたISOイメージファイルを選択
+
+
+⑥仮想マシンの再生を選択
+
+⑦
+
+
+https://sites.google.com/site/dayzouko/home/computer/vmware-ubuntsu
+http://futurismo.biz/archives/1330
+https://communities.vmware.com/thread/480555
+http://harablo2012.blogspot.jp/2013/11/vmwareplayer6-dhcp.html
+
+■andriod sdk download
+1 http://developer.android.com/sdk/index.html#Other
+
+2 exe選択
+
+3 install
+
+
+■eclipse ダウンロード
+
+■ADTプラグインをインストール
+1 help-新規ソフトウエアのインストールで以下を追加
+https://dl-ssl.google.com/android/eclipse/
+
+■android sdkのパス設定
+1 設定-AndroidのSDKロケーションでパスを設定
+
+2 SDK Manager.exeを管理者として実行し、
+
+
+■AVD作成
+1 以下サイトでパースペクティブ設定変更
+http://www.devlog.alt-area.org/?p=547
+
+2 ウインドウ-AVDマネージャ
+
+■Androidアプリ作成
+1 新規－その他-androidアクティビティ
+2 実行-Androidアプリケーション
+
+
+
+■Android NDK install
+https://developer.android.com/tools/sdk/ndk/index.html
+
+android-ndk-r10d-windows-x86_64.exe
+
+
+
+
+
+
+
+sudo yum update -y
+wget -P /etc/yum.repos.d http://www.hop5.in/yum/el6/hop5.repo
+yum install xz docker-io -y
+service docker start
+
+
+docker pull centos
+docker images
+docker run -t centos /bin/bash -c "ps aux && ip addr show eth0"
+
+docker commit c977b601211c my:test1
+
+
+git clone https://github.com/kunihirotanaka/docker-centos-lamp.git
+docker build -t centos:lamp .
+/usr/bin/monit
+docker run -d -t -p 12812:2812 -p 10022:22 centos:lamp /usr/bin/monit -I
+
+
+eclipseでsvn
+①svnエクスプローラでリポジトリ作成
+リポジトリパスにフォルダを指定
+
+②プロジェクトをインポート
+プロジェクトを選択-チーム-プロジェクトの共用
+svn-既存のリポジトリ
+拡張ﾓｰﾄﾞ-単一プロジェクトレイアウト-subversion推奨レイアウト使用
+
+③ブランチ作成
+チーム-ブランチ作成
+ブランチ名:プロジェクト名-bra
+
+④ブランチからチェックアウト
+svnエクスプローラ
+branchesから該当するブランチ選択
+検索/チェックアウトで別名チェックアウト
+
+⑤マージ
+トランクにブランチの更新をマージ（取り込み）する
+
+トランクのプロジェクトでマージを選択
+url:参照でマージするプロジェクトを選択
+改訂:取り込む対象の改訂を選択
+
+
+■gitlabを使ってみる
+
+①RPMダウンロード
+https://www.gitlab.com/downloads/
+
+②インストール
+sudo yum install -y openssh-server
+sudo yum install -y postfix
+wget https://downloads-packages.s3.amazonaws.com/centos-6.5/gitlab-6.9.2_omnibus-1.el6.x86_64.rpm
+sudo rpm -i gitlab-6.9.2_omnibus-1.el6.x86_64.rpm
+sudo gitlab-ctl reconfigure
+
+# 確認
+sudo gitlab-ctl status;
+
+③http://<host>/
+
+初期ログイン
+admin@local.host
+パスワードなしでSign in
+
+すると、パスワード変更を求めてくるので再設定
+
+
+④SELinuxの設定が原因で公開鍵認証ができない対応
+
+1 SELinux semanageの導入
+>yum provides *bin/semanage
+>sudo yum install policycoreutils-python-2.0.83-19.39.el6.x86_64
+>
+>sudo semanage fcontext -a -t ssh_home_t "/var/opt/gitlab/.ssh"
+>sudo semanage fcontext -a -t ssh_home_t "/var/opt/gitlab/.ssh/authorized_keys"
+>sudo restorecon -R -v /var/opt/gitlab/.ssh restorecon reset /var/opt/gitlab/.ssh context system_u:object_r:var_t:s0->system_u:object_r:ssh_home_t:s0
+
+⑤ユーザ作成
+１ 以下の順で作成
+Admin area
+user
+New user
+
+⑥プロジェクト作成
+１ 以下の順で作成
+Admin area
+projects
+New Project
+Create project
+
+⑦プロジェクトにメンバー追加
+Admin area
+projects
+Members
+
+⑦SSH KEY設定
+１ 以下の順で設定
+Profile settings
+SSH
+add SSH Key
+
+keyにSSH-2 RSA の公開鍵を設定
+
+
+■tortoise git
+①フォルダで、Git Init
+②フォルダで、右clickして設定
+Git-リモート
+リモート:origin
+URL:リモートリポジトリのURL
+Putty認証:SSH-2 RSA の秘密鍵
+
+③フェッチする
+④git同期化
+リモート:origin
+リモートブランチを選択
+
+⑤プル
+
+
+■Gitコマンド
+①clone作成
+git clone git@localhost:arakawa2/arakawa2prj.git
+
+②修正したファイルをadd
+git add .
+
+③commit
+git commit -m 'first commit'
+
+④リモートリポジトリ登録
+git remote add origin git@localhost:Y.Arakawa/hellogit.git
+
+⑤プッシュ
+git push -u origin master
+
+
+
+[参考サイト]
+
+http://apserver.hatenablog.com/entry/2014/08/30/093833
+http://d.hatena.ne.jp/next49/20140604/p2
+http://mimumimu.net/blog/2012/01/31/selinux-%E3%81%A7-restorecon-%E3%81%97%E3%81%A6%E3%81%82%E3%81%86%E3%81%82%E3%81%86%E3%80%82/
+
+git init --bare --shared=true
+
+git://localhost/test_remote_repository.git
+
+git clone git://<リモートリポジトリを構築したPCのIPアドレス>/test_remote_repository.git
+
+
+
+https://github.com/uustyle/EJB.git
+git@github.com:uustyle/EJB.git
+
+https://github.com/uustyle/EJB2.git
+git@github.com:uustyle/EJB2.git
+
+
+git config --global user.email "uustyle@uustyle.co.jp"
+git config --global user.name "Y.Arakawa"
+git config --global core.quotepath false
+git config --global core.autocrlf false
+git config --global push.default upstream
+glassfish4+eclipseでjax-ws
+
+1 GlassFish4をダウンロード
+https://glassfish.java.net/download.html
+
+2 eclipse起動して新規サーバ
+JDK:jdk1.7以上
+Runtime:GlassFish4
+Glassfish Server:%GLASSFISH_ROOT%\glassfish
+
+3 domeinの設定
+管理者password設定(初期状態は未設定みたい)
+
+4 サーバ起動
+http://localhost:4848で確認
+認証エラーの場合、サーバ設定で以下をチェック
+「管理コマンドに匿名接続を使用」をチェックする。
+
+
+
+
+
+
+■以下よりdownload
+https://glassfish.java.net/download-archive.html
+
+■downloadしたjarでインストール
+java -Xmx512m -jar ./glassfish-installer-v2.1.1-b31g-windows-ml.jar
+
+■インストール先に移動してantコマンド
+(JDKは1.5か1.6)
+cd glassfish
+ant -f setup.xml
+
+■起動する
+cd bin
+asadmin start-domain domain1
+asadmin stop-domain domain1
+
+■管理コンソールでJDBC接続プールとデータソース作成
+http://localhost:4848
+
+・ヒープを増やす
+アプリケーションサーバ-JVM設定-JVMオプション
+-Xmx1024m
+-XX:MaxPermSize=592m
+
+(設定ファイルは以下)
+.\glassfish\glassfish\domains\domain1\config\domain.xml
+
+・postgres接続環境
+①%GLASSFISH_ROOT%\glassfish\lib に postgresql-9.0-801.jdbc4.jarをコピー
+
+②JDBC接続プールの作成
+②-1 リソース-JDBC-接続poolで新規作成
+②-2 名前/リソースタイプ/ベンダーを選択して次へ
+②-3 スクロールしていくと各種プロパティ設定の入力項目がある。
+ＤＢに接続するためのID、パスワード、URLとかとか。ココが間違ってると当然接続できない。
+
+PortNumber=5432
+DatabaseName=postgres
+User=user
+Password=password
+
+③pingして接続確認
+
+④JNDIデータソース作成
+④-1 リソース > JDBC> JDBC リソース
+④-2 JNDI名:jdbc/PostgresDS
+     プール名:上記②
+
+
+■エンタープライズ・アプリケーション・プロジェクトを作成
+①サーバの設定
+ウインドウ-設定-サーバ-ランタイム環境
+追加ボタン押下でGlassFish2.1 JavaEE5を選択
+（なければサーバ・アダプタのダウンロード）
+
+②ファイル-新規-EJBプロジェクト
+プロジェクト名:TestEJB2
+ターゲットランタイム:①で追加したサーバ
+EJBバージョン:5.0
+
+上記を選択して次へ
+
+③新規モジュールを選択して以下を入力
+EJBモジュール:TestEJB2EJBEJB
+Webモジュール:TestEJB2Web
+
+④TestEJB2Webプロジェクトのプロパティ
+デプロイメントアセンブリ-プロジェクト
+TestEJB2EJBEJB:WEB-INF/lib/TestEJB2EJBEJB.jar
+
+
+⑤TestEJB2EJBEJBプロジェクトにEJBモジュールを作成
+ejbModule/pkgにinterfaceとclassを作成
+
+＜interface＞
+package pkg;
+
+public interface FirstEjb {
+	void ejbMethod();
+}
+
+
+＜クラス＞
+package pkg;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
+@Stateless
+@Remote(FirstEjb.class)
+public class FirstEjbBean implements FirstEjb {
+
+	//@Override
+	public void ejbMethod() {
+		System.out.println("My First EJB project");
+	}
+}
+
+
+⑥TestEJB2Webにサーブレット作成
+
+package pkg;
+
+import java.io.IOException;
+
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class EJBServlet
+ */
+public class EJBServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@EJB(beanName = "FirstEjbBean")
+	private FirstEjb helloWorld;
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EJBServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		this.helloWorld.ejbMethod();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}
+
+⑦サーバにTestEJB2を追加し、urlたたく
+
+
+
+wsimport -s src -d bin http://localhost:8080/SampleWeb/HelloWebService?wsdl
+wsimport.exe -s src -d classes http://localhost:8080/SampleWeb/HelloWebServiceService?wsdl
+
+
+
+http://www.atmarkit.co.jp/ait/articles/0306/27/news002_3.html
+http://cocomonrails.blogspot.jp/2010/08/javajax-ws-web-on-eclipse-glassfish.html
+http://www.atmarkit.co.jp/ait/articles/0306/27/news002_3.html━/usr/java/jdk1.6.0_45
+    6  yum update
+    7  wget http://download.java.net/javaee5/v2.1.1_branch/promoted/Linux/glassfish-installer-v2.1.1-b31g-linux-ml.jar
+    8  yum install wget
+    9  wget http://download.java.net/javaee5/v2.1.1_branch/promoted/Linux/glassfish-installer-v2.1.1-b31g-linux-ml.jar
+   10  pwd
+   11  ls
+   12  java -Xmx256m -jar glassfish-installer-v2.1.1-b31g-linux-ml.jar
+
+  22  ./jdk-1_5_0_22-linux-amd64-rpm.bin
+   23  chmod +x jdk-1_5_0_22-linux-amd64-rpm.bin
+   24  ./jdk-1_5_0_22-linux-amd64-rpm.bin
+   25  vim /etc/profile
+   26  vi /etc/profile
+   27  cd /usr/java/jdk1.5.0_22/
+   28  pwd
+   29  ls
+   30  source /etc/profile
+   31  java -version
+   32  cd
+   33  pwd
+   34  ls
+   35  java -Xmx256m -jar glassfish-installer-v2.1.1-b31g-linux-ml.jar
+   36  mv glassfish /usr/local/glassfish-v2.1.1
+   37  cd glassfish-v2.1.1
+   38  pwd
+   39  cd /usr/local/glassfish-v2.1.1/
+   40  pwd
+   41  ls
+   42  chmod -R 777 lib/ant/bin
+   43  lib/ant/bin/ant -f setup-cluster.xml
+   44  pwd
+   45  ls
+   46  cd domains/
+   47  pwd
+   48  ls
+   49  asadmin
+   50  pwd
+   51  ls
+   52  cd ..
+   53  pwd
+   54  ls
+   55  cd lib/
+   56  pwd
+   57  ls
+   58  locate asadmin
+   59  yum -y install mlocate
+   60  locate asadmin
+   61  updatedb
+   62  locate asadmin
+   63  locate iptables;
+   64  vi /etc/sysconfig/iptables
+   65  locate asadmin
+   66  cd /usr/local/glassfish-v2.1.1/bin/asadmin start-domain domain1
+   67  /usr/local/glassfish-v2.1.1/bin/asadmin start-domain domain1
+   68  ls
+
+./sjsas_ee-9_1-linux-ml.bin -javahome /usr/java/jdk1.6.0_45
+
+libXset.so
+
+yum --enablerepo=epel,remi,rpmforge install libxml2 libxml2-devel
+
+
+xslt-config --version
+
+yum install libXtst.so.6①以下よりadwordsライブラリをダウンロード
+https://github.com/googleads/googleads-java-lib
+
+②googleads-java-lib配下のpomで、eclipseプロジェクトに変換
+googleads-java-lib-master>mvn eclipse:eclipse
+
+③\modules配下のeclipseプロジェクトをインポート
+
+④\examples配下のpomで、eclipseプロジェクトに変換
+googleads-java-lib-master\examples>mvn eclipse:eclipse
+
+⑤\examples配下のeclipseプロジェクトをインポート
+
+
+OAuth 2.0設定
+①クライアント ID とクライアント シークレットを作成する
+
+①－1プロジェクトを作成する
+https://console.developers.google.com/project?hl=ja
+プロジェクト名を入力して作成
+
+①－2[API と Auth] をクリックしてメニューを展開し、[認証情報] をクリックします。
+
+①－3 [新しいクライアント ID を作成] をクリックして、
+新しいクライアント ID とクライアント シークレットを作成します
+
+インストール型アプリケーション タイプ（推奨）を選択
+
+①－4 クライアント ID とクライアント シークレットが作成され、表示されます。
+
+
+クライアント ライブラリを設定して使用する
+
+①ads.propertiesにクライアント ID とクライアント シークレットを入力します。
+/adwords-axis-examples/src/main/resources/ads.properties
+
+api.adwords.clientId=xxx-xxx
+api.adwords.clientSecret=xxx
+
+②GetRefreshToken.javaを実行
+>/adwords-axis-examples/src/main/java/adwords/axis/auth/GetRefreshToken.java 実行
+
+②-1 Google の承諾ページのurlがコンソールに表示されるので、ブラウザでページ表示
+
+②-2 [同意する] をクリックして、アプリケーションに権限を与えます。
+
+②-3 acceptクリックで、そのページに認証コードが表示されます。
+
+②-4 この認証コードをコピーして、クライアント ライブラリ ユーティリティに貼り付けます。
+（コンソールが待ち状態になっているので、貼り付けてenter）
+
+②-5 リフレッシュ トークンがコンソールに表示されます。
+
+②-6 リフレッシュ トークンをクライアント ライブラリの設定ファイルに保存します
+
+ads.propertiesは以下のように設定する
+
+api.adwords.refreshToken=取得したリフレッシュトークン
+
+# If you do not have a client ID or secret, please create a project in the
+# Developers console. See the following link for more information:
+# https://github.com/googleads/googleads-java-lib/wiki/Using-OAuth2.0
+api.adwords.clientId=取得したクライアント
+api.adwords.clientSecret=取得したクライアントシークレット
+
+api.adwords.clientCustomerId=adwardsお客様id
+api.adwords.userAgent=多分、会社名とか
+api.adwords.developerToken=開発者トークン
+
+
+
+
+①以下よりjmeterをダウンロード
+http://jmeter.apache.org/download_jmeter.cgi
+
+②どこかのフォルダに解凍する
+
+③以下を実行
+bin/jmeter.bat
+
+④テストを作成
+左ペインの「テスト計画」を右クリックし，「追加」→「スレッドグループ」。
+名前:テスト名
+スレッド数:起動するスレッド数
+Ramp-Up期間（秒）： 10（スレッド立ち上げ期間）
+
+⑤URLの設定
+左ペインの「スレッドグループ」を右クリックし，「追加」→「サンプラー」→「HTTPリクエスト」。
+サーバまたはip:localhost
+ポート:8080
+パス:./StrutsSample/action1.do
+
+⑥結果の設定
+左ペインの「スレッドグループ」を右クリックし，「追加」→「リスナー」→「結果を表で表示」。
+
+⑦リクエストパラメータ設定
+1 CSVファイル作成
+valueA1,valueA2
+valueB1,valueB2
+
+2 「スレッドグループ」を右クリックし，
+「追加」→「設定エレメント」→「CSV DataSet Config」でCSVファイルから外部パラメータを読み込む
+Filename : csvファイルのパス
+Variable Names : username,pass (適当な変数名)
+
+⑧実行
+ツールバーで「実行」→「開始」。
+
+[参考サイト]
+http://d.hatena.ne.jp/language_and_engineering/20081014/1223905380
+
+
+
+
+
+
+oracle install
+
+・以下のサイトから、ダウンロード
+http://www.oracle.com/technetwork/jp/database/index-100695-ja.html
+
+1 virtual boxにcentos6install
+
+2 xwindowを入れる
+yum -y groupinstall "X Window System" 
+yum groupinstall "Desktop" "Desktop Platform" "General Purpose Desktop"
+
+3 VBoxGuestAdditionsをインストール
+VBoxGuestAdditions.isoをセット
+mkdir /mnt/cdrom
+mount -r -t iso9660 /dev/cdrom /mnt/cdrom
+cd /mnt/cdrom
+./VBoxLinuxAdditions.run
+
+4 xwindow起動
+startx
+
+6 必要なものを事前にインストールしておきます。
+yum -y install binutils compat-libstdc++-33 elfutils-libelf elfutils-libelf-devel glibc glibc-common glibc-devel gcc gcc-c++ libaio libaio-devel libgcc libstdc++ libstdc++-devel make sysstat unixODBC unixODBC-devel pdksh
+
+
+7 カーネルパラメータを編集します。
+vi /etc/sysctl.conf
+# 最終行に追記
+net.ipv4.ip_local_port_range = 9000 65500
+fs.file-max = 6815744
+kernel.sem = 250 32000 100 128
+net.core.rmem_default=262144
+net.core.wmem_default=262144
+net.core.rmem_max=4194304
+net.core.wmem_max=1048576
+fs.aio-max-nr = 1048576
+
+
+8 oracleユーザ作成
+groupadd -g 200 oinstall
+groupadd -g 201 dba
+useradd -u 440 -g oinstall -G dba -d /usr/oracle oracle
+vi /etc/pam.d/login
+
+#9行目に追記
+session   required   pam_limits.so
+
+
+vi /etc/security/limits.conf
+# 最終行に追記
+ oracle          soft     nproc           2047
+oracle          hard     nproc           16384
+oracle          soft     nofile          1024
+oracle          hard     nofile          65536
+
+
+vi /etc/profile
+# 最終行に追記
+ if [ $USER = "oracle" ]; then
+      if [ $SHELL = "/bin/ksh" ]; then
+           ulimit -p 16384
+           ulimit -n 65536
+      else
+           ulimit -u 16384 -n 65536
+      fi
+fi
+
+
+9 Oracle用の環境設定をしておきます
+
+chmod 755 /usr/oracle 
+mkdir /usr/oracle/app 
+chmod 775 /usr/oracle/app 
+mkdir /usr/oracle/oradata 
+chmod 775 /usr/oracle/oradata 
+vi ~/.bash_profile
+
+# 最終行に追記
+umask 022
+export ORACLE_BASE=/usr/oracle/app
+
+
+
+[oracle@db01 ~]$ mkdir tmp
+
+[oracle@db01 ~]$ cd tmp 
+[oracle@db01 tmp]$ unzip linux.x64_11gR2_database_1of2.zip 
+[oracle@db01 tmp]$ unzip linux.x64_11gR2_database_2of2.zip 
+[oracle@db01 tmp]$ ./database/runInstaller
+
+
+10 以下のサイトを参考に進める
+http://www.server-world.info/query?os=CentOS_6&p=oracle11g&f=2
+
+【参考サイト】
+http://www.server-world.info/query?os=CentOS_5&p=x
+http://morrey22.hatenablog.com/entry/2013/04/14/212837
+http://mokky14.hatenablog.com/entry/2013/04/17/184333
+http://d.hatena.ne.jp/funkybass/20090819/1250631901
+http://d.hatena.ne.jp/yus_iri/20110916/1316190103
+
+
+
+
+oracle cliant インストール
+1 以下をダウンロード
+http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html
+instantclient-basic-linux.x64-11.2.0.4.0.zip
+instantclient-sqlplus-linux.x64-11.2.0.4.0.zip
+
+2 /usr/local/binにコピー
+root>cp instantclient-basic-linux.x64-11.2.0.4.0.zip /usr/local/bin/.
+root>cp instantclient-sqlplus-linux.x64-11.2.0.4.0.zip /usr/local/bin/.
+
+3 unzip 
+root>unzip instantclient-basic-linux.x64-11.2.0.4.0.zip
+root>unzip instantclient-sqlplus-linux.x64-11.2.0.4.0.zip
+
+4 /etc/profileを更新
+# Oracle InstantClient
+LD_LIBRARY_PATH=/usr/local/bin/instantclient_11_2
+PATH=$LD_LIBRARY_PATH:$PATH
+NLS_LANG=JAPANESE_JAPAN.AL32UTF8
+export LD_LIBRARY_PATH
+export PATH
+export NLS_LANG
+
+5 libaio.so.1のインストール
+yum install libaio
+yum install libaio-devel
+
+
+
+http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html
+http://issyyee.publog.jp/archives/32267435.html
+
+■emctl
+emctl status dbconsole
+
+
+■ユーザを作成
+
+
+権限を付与
+
+
+テーブルスペースを作成
+
+
+テーブルを作成
+
+
+リスナを作成
+
+
+クライアント側でsqlplus
+
+sqlplus arakawa/arak001@localhost:1521/db01.localhost.localdomain
+
+
+
+openssl ca -config /etc/pki/tls/openssl.cnf -in server.csr -keyfile /etc/CA/private/cakey.pem -cert /etc/CA/cacert.pem -out server.crt
+
+
+openssl ca -revoke /etc/CA/newcerts/00.pem
+/etc/CA/newcerts
+
+
+
+wget --no-check-certificate https://www.uustyle.co.jp/kaisya/index.html
+wget https://www.uustyle.co.jp/kaisya/index2.html
+https://mnt-clp.fromacareer.com/CLP/CLP00/CLP000101.jsp?clientCd=w001156000&clientHash=0e61731dbf042677f3ea564afcc0a516
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+>yum update
+
+1. SELinux(/etc/selinuc/config)をpermissiveまたは、disabledに設定
+
+vi /etc/selinuc/config
+#SELINUX=enforcing
+SELINUX=permissive
+
+>setenforce 0
+
+2. 必要なパッケージをインストール
+
+>yum install wget
+
+4. Zabbix のインストール
+>wget http://repo.zabbix.com/zabbix/2.2/rhel/6/x86_64/zabbix-release-2.2-1.el6.noarch.rpm
+>rpm -ivh zabbix-release-2.2-1.el6.noarch.rpm
+>yum -y install zabbix-server zabbix-web
+
+5. /etc/my.cnf の編集 (デフォルト文字コードを UTF-8 に変更する場合)
+[mysqld]
+default-character-set=utf8
+
+7. DB と DBユーザーの作成
+mysqladmin -u root password arak001
+mysql -parak001
+
+mysql> CREATE DATABASE zabbix;
+mysql> GRANT ALL PRIVILEGES ON zabbix.* TO zabbix@localhost IDENTIFIED BY 'arak001';
+mysql> FLUSH PRIVILEGES;
+mysql> exit
+
+8. スキーマの拡張
+>mysql -u zabbix -parak001 zabbix < /usr/share/doc/zabbix-server-mysql-2.2.7/create/schema.sql
+>mysql -u zabbix -parak001 zabbix < /usr/share/doc/zabbix-server-mysql-2.2.7/create/images.sql
+>mysql -u zabbix -parak001 zabbix < /usr/share/doc/zabbix-server-mysql-2.2.7/create/data.sql
+
+9. /etc/zabbix/zabbix_server.conf の編集
+#DBUser=root
+DBUser=zabbix
+
+# DBPassword=
+DBPassword=arak001
+
+
+10. 日本語フォント表示対策
+# mv /usr/share/zabbix/fonts/graphfont.ttf /usr/share/zabbix/fonts/graphfont.ttf.org
+# ln -s /usr/share/fonts/ipa-pgothic/ipagp.ttf /usr/share/zabbix/fonts/graphfont.ttf
+
+11. Zabbix の起動
+
+# service zabbix-server start
+
+3. apache の起動
+
+# service httpd start
+
+4. 起動設定
+
+# chkconfig httpd on
+5. iptables が有効になっている場合は TCP/80,443 を解放
+
+/etc/sysconfig/iptables に追記
+
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+# service iptables restart
+
+
+
+
+service mysqld stop
+service httpd stop
+service zabbix-server stop
+
+
+service mysqld start
+service httpd start
+service zabbix-server start
+
