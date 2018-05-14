@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>サンプル</title>
+</head>
+<body>
+<script>
+document.write("Hello world!!");
+
+function search(item,str) {
+ 
+console.log("search", item,str);
+
+	if (item.cd == str) {
+		return true;
+	}
+	for(var i = 0; i < item.child.length; i++) {
+		var ret = search(item.child[i], str);
+		if (ret) {
+			return true;
+		}
+	}
+}
+
+
+
+
+var array2 = ['リンゴ', 'バナナ', 'イチゴ'];
+
+var　obj1 = {};
+obj1["cd"] = "A";
+obj1["child"] = [];
+
+var　obj2 = {};
+obj2["cd"] = "A01";
+obj2["child"] = [];
+
+var　obj3 = {};
+obj3["cd"] = "A01d";
+obj3["child"] = [];
+
+var　obj4 = {};
+obj4["cd"] = "A01e";
+obj4["child"] = [];
+
+
+obj2["child"].push(obj3);
+obj2["child"].push(obj4);
+
+
+var　obj5 = {};
+obj5["cd"] = "A02";
+obj5["child"] = [];
+
+obj1["child"].push(obj2);
+obj1["child"].push(obj5);
+
+
+var　obj6 = {};
+obj6["cd"] = "B";
+obj6["child"] = [];
+
+
+var　obj = {};
+obj["child"] = [];
+obj["child"].push(obj1);
+obj["child"].push(obj6);
+
+
+	for(var i = 0; i < obj.child.length; i++) {
+		var ret = search(obj.child[i], "A01e");
+		if (ret) {
+		}
+	}
+
+
+console.log(obj);
+
+</script>
+</body>
+</html>
